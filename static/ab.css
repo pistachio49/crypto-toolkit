@@ -1,0 +1,22 @@
+.container
+{
+    display:flex;
+    flex-direction:column;
+    width:100vw;
+    height:90vh;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+}
+
+.key
+{
+    height:100px;
+    min-width:200px;
+    background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    text-align:center;
+    line-height:100px;
+    cursor:pointer;
+    border:2px solid black;
+    border-radius:5%;
+}

@@ -1,0 +1,15 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <form method="POST" action="/decrypt">
+            <label>Encrypted text : </label><input type="text" name="value"/>
+        </form>
+        <div>
+            {%if value %}
+            <span>The Decrypted text for {{inputvalue}} is : </span>
+            {{value}}
+            {% endif %}
+        </div>
+    </body>
+</html>

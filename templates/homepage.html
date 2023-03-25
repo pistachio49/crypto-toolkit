@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Project</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='ab.css')}}">
+    </head>
+    <body>
+        <h1>Computer Security Project</h1>
+        <div class="container">
+        <div class="key" id="enc">
+            Encryption
+        </div>
+        <div class="key" id="dec">
+            Decryption
+        </div>
+        <div class="key" id="crypt">
+            Cryptoanalysis
+        </div>
+        </div>
+        <script>
+            let ob=document.getElementById("enc")
+            ob.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/encrypttext"
+            })
+            let ob1=document.getElementById("dec")
+            ob1.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/decrypttext"
+            })
+            let ob2=document.getElementById("crypt")
+            ob2.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/cryptoanalysis"
+            })
+        </script>
+    </body>
+</html>

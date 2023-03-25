@@ -1,0 +1,16 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form method="POST" action="/encrypt">
+            <label>Plain text : </label><input type="text" name="value"/>
+        </form>
+        <div>
+            {%if value %}
+            <span>The Encrypted text for {{inputvalue}} is : </span>
+            {{value}}
+            {% endif %}
+        </div>
+    </body>
+</html>

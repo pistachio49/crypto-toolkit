@@ -6,11 +6,12 @@
         <form method="POST" action="/encrypt">
             <label>Plain text : </label><input type="text" name="value"/>
             <br><br>
-            <label>Key : </label><input type="number" name="key"/>
+            <label>Key1 : </label><input type="number" name="key"/>
+            &nbsp;&nbsp;
+            <label>Key2 : </label><input type="number" name="key2"/>
             <br><br>
             <select name="ciphermethod">
-                <option>Shift cipher</option>
-                <option>Caeser cipher</option>
+                <option>Affine cipher</option>
             </select>
             <button>Encrypt</button>
         </form>
@@ -20,6 +21,8 @@
             {%if value %}
             <span>The Encrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
             {{value}}
+            {% else %}
+            <span>Please enter a valid multiplicative key</span>
             {% endif %}
         </div>
         <script>

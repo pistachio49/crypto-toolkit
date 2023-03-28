@@ -3,8 +3,8 @@
 
     </head>
     <body>
-        <form method="POST" action="/encrypt">
-            <label>Plain text : </label><input type="text" name="value"/>
+        <form method="POST" action="/decrypt">
+            <label>Cipher text : </label><input type="text" name="value"/>
             <br><br>
             <label>Key : </label><input type="number" name="key"/>
             <br><br>
@@ -12,20 +12,20 @@
                 <option>Shift cipher</option>
                 <option>Caeser cipher</option>
             </select>
-            <button>Encrypt</button>
+            <button>Decrypt</button>
         </form>
         <button id="bk">Back</button>
         <br><br>
         <div>
             {%if value %}
-            <span>The Encrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
+            <span>The Decrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
             {{value}}
             {% endif %}
         </div>
         <script>
             let u1=document.getElementById('bk')
             u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/encrypttext"
+                window.location.href="http://127.0.0.1:5000/decrypttext"
             })
         </script>
     </body>

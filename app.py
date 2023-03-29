@@ -1,6 +1,8 @@
 from flask import Flask,render_template,request
 from sympy import Matrix
 import numpy as np
+from math import ceil
+from numpy import array
 
 app=Flask(__name__)
 
@@ -113,7 +115,6 @@ def railfencecipher(val):
 def keylesscipher(val,columnno):
     plain_text=val.lower()
     column=int(columnno)
-
     plain_text_list=[[-1]*column for i in range(int(ceil(len(plain_text)/(column))))]
     k=0
     for i in range(int(ceil(len(plain_text)/(column)))):
@@ -132,9 +133,9 @@ def keylesscipher(val,columnno):
                 continue
     return cipher_text
 
-def permutationcipher():
-    plain_text=input().lower()
-    x=input()
+def permutationcipher(val,key):
+    plain_text=val.lower()
+    x=key
     key=[int(i) for i in x.split(" ")]
     count=0
 #Addition of boguz characters
@@ -162,8 +163,43 @@ def permutationcipher():
                 continue
     return cipher_text
 
-def combinedapproachcipher():
-    pass
+def combinedapproachcipher(val,key):
+    plain_text=val.lower()
+    x=key
+    key=[int(i) for i in x.split(" ")]
+    count=0
+    #Addition of boguz characters
+    if (len(plain_text)%len(key)!=0):
+        count=len(key)-len(plain_text)%len(key)
+    while(count):
+        plain_text+=chr(123-count)
+        count-=1
+    #print(plain_text)
+
+    plain_text_list=[[-1]*(len(key)) for i in range(int(ceil(len(plain_text)/(len(key)))))]
+    k=0
+    for i in range(int(ceil(len(plain_text)/(len(key))))):
+        for j in range(len(key)):
+            plain_text_list[i][j]=(plain_text[k])
+            k=k+1
+            if(k==len(plain_text)):
+                break
+    #print(array(plain_text_list))
+
+    plain_text_list2=[[-1]*(len(key)) for i in range(int(ceil(len(plain_text)/(len(key)))))]
+    for i in range(int(ceil(len(plain_text)/(len(key))))):
+        for k in range(len(key)):
+            plain_text_list2[i][k]=plain_text_list[i][key[k]-1].upper()
+    #print(array(plain_text_list2))
+
+    cipher_text=""
+    for i in range(len(key)):
+        for j in range(ceil(len(plain_text)/(len(key)))):
+            try :
+                cipher_text+=(plain_text_list2[j][i]).upper()
+            except :
+                continue
+    return cipher_text
 
 @app.route("/")
 @app.route("/homepage")
@@ -205,8 +241,8 @@ def cryptoanalysis():
 @app.route("/encrypt",methods=['GET','POST'])
 def encrypt():
     output=request.form.to_dict()
-    value=output["value"]
-    key=output["key"]
+    value=output.get("value")
+    key=output.get("key")
     key2=output.get("key2")
     keysize=output.get("keysize")
     ciphermethod=output.get("ciphermethod")
@@ -232,8 +268,20 @@ def encrypt():
     elif(ciphermethod=="Hill cipher"):
         d1=hillcipherenc(value,keysize,key)
         a=3
+    elif(ciphermethod=="Rail fence cipher"):
+        d1=railfencecipher(value)
+        a=4
+    elif(ciphermethod=="keyless transposition cipher with fixed number of columns"):
+        d1=keylesscipher(value,key)
+        a=4
+    elif(ciphermethod=="Permutation transposition cipher"):
+        d1=permutationcipher(value,key)
+        a=4
+    elif(ciphermethod=="Combined approach(key+keyless)"):
+        d1=combinedapproachcipher(value,key)
+        a=4
     else:
-        d1="test"
+        d1="test1"
         a=1
     if(a==1):
         return render_template("encryption.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
@@ -241,6 +289,8 @@ def encrypt():
         return render_template("vignere.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
     elif(a==3):
         return render_template("hill.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+    elif(a==4):
+        return render_template("transposition.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
 @app.route("/shiftdec")
 def shiftdec():
     return render_template("shiftdec.html")

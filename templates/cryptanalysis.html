@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>Cryptanalysis</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='ab.css')}}">
+    </head>
+    <body>
+        <h1>Cryptanalysis</h1>
+        <div class="container">
+        <div class="key" id="affine">
+            Affine cipher
+        </div>
+        <div class="key" id="hill">
+            Hill cipher
+        </div>
+        <div class="key" id="shift">
+            Shift cipher/Caeser cipher
+        </div>
+        <div class="key" id="vig">
+           Vignere cipher
+        </div>
+        <div class="key" id="mono">
+            Monoalphabetic Substitution Cipher
+         </div>
+        <div class="key" id="tr">
+            Transposition cipher
+        </div>
+        <div class="key" id="hm">
+            Home Page
+        </div>
+        </div>
+        <script>
+            let ob=document.getElementById("affine")
+            ob.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/affinecrypt"
+            })
+            let ob1=document.getElementById("hill")
+            ob1.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/hillcrypt"
+            })
+            let ob2=document.getElementById("shift")
+            ob2.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/shiftcrypt"
+            })
+            let ob3=document.getElementById("vig")
+            ob3.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/vigcrypt"
+            })
+            let ob4=document.getElementById("tr")
+            ob4.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/transpositioncrypt"
+            })
+            let ob5=document.getElementById("hm")
+            ob5.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/"
+            })
+            let ob6=document.getElementById("mono")
+            ob6.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/monocrypt"
+            })
+        </script>
+    </body>
+</html>

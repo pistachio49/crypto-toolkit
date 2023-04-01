@@ -21,7 +21,7 @@
             {%if value %}
             <span>The decrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
             {{value}}
-            {% else %}
+            {% elif err %}
             <span>Please enter a valid multiplicative key</span>
             {% endif %}
         </div>

@@ -1,0 +1,31 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <form method="POST" action="/crypt">
+            <label>Cipher text : </label><input type="text" name="value"/>
+            <br><br>
+            <select name="ciphermethod">
+                <option>Affine cipher</option>
+            </select>
+            <button>cryptanalysis</button>
+        </form>
+        <button id="bk">Back</button>
+        <br><br>
+        <div>
+            {%if value %}
+            <span>The most common text is : {{value}} </span>
+            <br><br>
+            <span>The Key Pair is : {{key}} </span>
+            {% elif err %}
+            valid word is not present in the used wordlist
+            {% endif %}
+        </div>
+        <script>
+            let u1=document.getElementById('bk')
+            u1.addEventListener('click',()=>{
+                window.location.href="http://127.0.0.1:5000/cryptanalysis"
+            })
+        </script>
+    </body>
+</html>

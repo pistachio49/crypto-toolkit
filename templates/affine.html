@@ -19,9 +19,9 @@
         <br><br>
         <div>
             {%if value %}
-            <span>The Encrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
-            "{{value}}"
-            {% else %}
+            <span>The Encrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
+            {{value}}
+            {% elif err %}
             <span>Please enter a valid multiplicative key</span>
             {% endif %}
         </div>

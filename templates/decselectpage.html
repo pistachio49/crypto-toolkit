@@ -16,8 +16,11 @@
             Shift cipher/Caeser cipher
         </div>
         <div class="key" id="vig">
-           Monoalphabetic Substitution cipher/Vignere cipher
+           Vignere cipher
         </div>
+        <div class="key" id="mono">
+            Monoalphabetic Substitution Cipher
+         </div>
         <div class="key" id="tr">
             Transposition cipher
         </div>
@@ -29,12 +32,12 @@
             let ob=document.getElementById("affine")
             ob.addEventListener('click',()=>
             {
-                window.location.href="http://127.0.0.1:5000/decrypttext"
+                window.location.href="http://127.0.0.1:5000/affinedec"
             })
             let ob1=document.getElementById("hill")
             ob1.addEventListener('click',()=>
             {
-                window.location.href="http://127.0.0.1:5000/decrypttext"
+                window.location.href="http://127.0.0.1:5000/hilldec"
             })
             let ob2=document.getElementById("shift")
             ob2.addEventListener('click',()=>
@@ -49,12 +52,17 @@
             let ob4=document.getElementById("tr")
             ob4.addEventListener('click',()=>
             {
-                window.location.href="http://127.0.0.1:5000/decrypttext"
+                window.location.href="http://127.0.0.1:5000/transpositiondec"
             })
             let ob5=document.getElementById("hm")
             ob5.addEventListener('click',()=>
             {
                 window.location.href="http://127.0.0.1:5000/"
+            })
+            let ob6=document.getElementById("mono")
+            ob6.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/monodec"
             })
         </script>
     </body>

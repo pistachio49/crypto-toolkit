@@ -3,7 +3,7 @@
 
     </head>
     <body>
-        <form method="POST" action="/encrypt">
+        <form method="POST" action="/decrypt">
             <label>Plain text : </label><input type="text" name="value"/>
             <br><br>
             <label>Key : </label><input type="text" name="key"/>
@@ -13,13 +13,13 @@
             <select name="ciphermethod" class="hiding">
                 <option>Hill cipher</option>
             </select>
-            <button>Encrypt</button>
+            <button>decrypt</button>
         </form>
         <button id="bk">Back</button>
         <br><br>
         <div>
             {%if value %}
-            <span>The Encrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
+            <span>The decrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
             {{value}}
             {% else %}
             {% endif %}
@@ -27,7 +27,7 @@
         <script>
             let u1=document.getElementById('bk')
             u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/encrypttext"
+                window.location.href="http://127.0.0.1:5000/decrypttext"
             })
         </script>
     </body>

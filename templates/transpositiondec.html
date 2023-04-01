@@ -1,9 +1,8 @@
 <html>
     <head>
-
     </head>
     <body>
-        <form method="POST" action="/encrypt">
+        <form method="POST" action="/decrypt">
             <div>Rail Fence Cipher</div>
             <br><br>
             <label>Plain text : </label><input type="text" name="value"/>
@@ -11,10 +10,10 @@
             <select name="ciphermethod" class="hiding">
                 <option>Rail fence cipher</option>
             </select>
-            <button>Encrypt</button>
+            <button>decrypt</button>
         </form>
         <br><br>
-        <form method="POST" action="/encrypt">
+        <form method="POST" action="/decrypt">
             <div>Keyless transposition cipher with fixed number of columns</div>
             <br><br>
             <label>Plain text : </label><input type="text" name="value"/>
@@ -24,10 +23,10 @@
             <select name="ciphermethod" class="hiding">
                 <option>keyless transposition cipher with fixed number of columns</option>
             </select>
-            <button>Encrypt</button>
+            <button>decrypt</button>
         </form>
         <br><br>
-        <form method="POST" action="/encrypt">
+        <form method="POST" action="/decrypt">
             <div>Permutation transposition cipher</div>
             <br><br>
             <label>Plain text : </label><input type="text" name="value"/>
@@ -37,26 +36,26 @@
             <select name="ciphermethod" class="hiding">
                 <option>Permutation transposition cipher</option>
             </select>
-            <button>Encrypt</button>
+            <button>decrypt</button>
         </form>
         <br><br>
-        <form method="POST" action="/encrypt">
+        <form method="POST" action="/decrypt">
             <div>Combined approach(key+keyless)</div>
             <br><br>
             <label>Plain text : </label><input type="text" name="value"/>
             <br><br>
             <label>Key : </label><input type="text" name="key"/>
             <br><br>
-            <select name="ciphermethod"class="hiding">
+            <select name="ciphermethod" class="hiding">
                 <option>Combined approach(key+keyless)</option>
             </select>
-            <button>Encrypt</button>
+            <button>decrypt</button>
         </form>
         <button id="bk">Back</button>
         <br><br>
         <div>
             {%if value %}
-            <span>The Encrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
+            <span>The decrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
             {{value}}
             {% else %}
             {% endif %}
@@ -64,7 +63,7 @@
         <script>
             let u1=document.getElementById('bk')
             u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/encrypttext"
+                window.location.href="http://127.0.0.1:5000/decrypttext"
             })
         </script>
     </body>

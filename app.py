@@ -12,10 +12,10 @@ def GCD(x,y):
     return x
 
 def affinecipher(val,k1,k2):
-    key1=int(k1)
+    key1=int(k1)%26
     if(GCD(key1,26)!=1):
         return "invalid"
-    key2=int(k2)
+    key2=int(k2)%26
     plain_text=val
     encryption_val={}
     ind=0
@@ -201,6 +201,177 @@ def combinedapproachcipher(val,key):
                 continue
     return cipher_text
 
+def modularMultiplicativeInverse(x,y):
+    for i in range(1,y):
+        if ((x%y)*(i%y))%y ==1:
+            return i
+
+
+def affinedecryption(value,key11,key12):
+    key1=int(key11)%26
+    while GCD(key1,26)!=1:
+        return "invalid!"
+    key2=int(key12)%26
+    cipher_text=value.upper()
+    encryption_val={}
+    ind=0
+    while ind!=26:
+        encryption_val[chr(97+ind)]=ind
+        ind+=1
+    decryption_val={}
+    ind=0
+    while (ind!=26):
+        decryption_val[ind]=chr(65+ind)
+        ind+=1
+    plain_text=""
+    key1_inverse= modularMultiplicativeInverse(key1,26)
+    for c in cipher_text:
+        plain_text+=decryption_val[((encryption_val[c.lower()]-key2)*(key1_inverse))%26].lower()
+    return plain_text
+
+def monodecryption(value,key1):
+    cipher_text=value.upper()
+    key=key1.upper()
+    plain_text=""
+    for c in cipher_text:
+        plain_text+=chr(97+key.index(str(c)))
+    return plain_text
+
+def vigdecryption(value,key1):
+    cipher_text=value.upper()
+    key=key1.upper()
+    plain_text=""
+    j=0
+    for c in cipher_text:
+        plain_text+=chr(97+(ord(c)%65-ord(key[j])%65)%26)
+        j=(j+1)%len(key)
+    return plain_text
+
+def hilldecryption(value,keysize,key1):
+    cipher_text=value.upper()
+    key_size=int(keysize)
+    key=key1.lower()
+    cipher_matrix=[]
+    row=[]
+    for c in cipher_text:
+        row.append(ord(c)%65)
+        if len(row)==key_size:
+            cipher_matrix.append(row)
+            row=[]
+    key_matrix=[]
+    row=[]
+    for k in key:
+        row.append(ord(k)%97)
+        if len(row)==key_size:
+            key_matrix.append(row)
+            row=[]
+    invkey_matrix=Matrix(key_matrix).inv_mod(26)
+    plain_matrix=(Matrix(cipher_matrix)*invkey_matrix%26)
+    plain_text=""
+    for p in list(plain_matrix):
+        plain_text+=chr(p+97)
+    return plain_text
+
+def railfencedec(value):
+    cipher_text=value.upper()
+    plain_1=""
+    plain_2=""
+    plain_text=""
+    l=len(cipher_text)
+    if(l%2==0):
+        k=l//2
+        plain_1=cipher_text[0:l//2].lower()
+        plain_2=cipher_text[l//2:].lower()
+    else:
+        k=l//2+1
+        plain_1=cipher_text[0:l//2+1].lower()
+        plain_2=cipher_text[l//2+1:].lower()+" "
+    for i in range(k):
+        plain_text+=(plain_1[i]+plain_2[i])
+    return plain_text
+
+def keylesscipherdec(value,key1):
+    cipher_text=value.upper()
+    column=int(key1)
+    cipher_text_list=[[-1]*column for i in range(int(ceil(len(cipher_text)/column)))]
+    k=0
+    for i in range(column):
+        for j in range(ceil(len(cipher_text)/column)):
+            cipher_text_list[j][i]=cipher_text[k]
+            k=k+1
+            if(k==len(cipher_text)):
+                break
+    plain_text=""
+    k=0
+    for i in range(int(ceil(len(cipher_text)/column))):
+        for j in range(column):
+            try:
+                plain_text+=cipher_text_list[i][j].lower()
+                k=k+1
+            except:
+                continue
+    return plain_text
+
+def permutationcipherdec(value,key1):
+    cipher_text=value.upper()
+    x=key1
+    key=[int(i) for i in x.split(" ")]
+    key_inverse=[-1]*len(key)
+    for i in range(len(key)):
+        key_inverse[key[i]-1]=i+1
+    cipher_text_list=[[-1]*len(key) for i in range(int(ceil(len(cipher_text)/len(key))))]
+    k=0
+    for i in range(int(ceil(len(cipher_text)/len(key)))):
+        for j in range(len(key)):
+            cipher_text_list[i][j]=cipher_text[k]
+            k=k+1
+            if(k==len(cipher_text)):
+                break
+    plain_text=""
+    k=0
+    for i in range(int(ceil(len(cipher_text)/len(key)))):
+        for j in range(len(key)):
+            try:
+                plain_text+=cipher_text_list[i][key_inverse[j]-1].lower()
+                k=k+1
+            except:
+                continue
+    return plain_text
+
+
+def combinedapproachcipherdec(value,key1):
+    cipher_text=value.upper()
+    x=key1
+    key=[int(i) for i in x.split(" ")]
+    key_inverse=[-1]*len(key)
+    for i in range(len(key)):
+        key_inverse[key[i]-1]=i+1
+    cipher_text_list2=[[-1]*len(key) for i in range(int(ceil(len(cipher_text)/len(key))))]
+    k=0
+    for i in range(len(key)):
+        for j in range(int(ceil(len(cipher_text)/len(key)))):
+            cipher_text_list2[j][i]=cipher_text[k]
+            k+=1
+            if k==len(cipher_text):
+                break
+    cipher_text_list=[[-1]*len(key) for i in range(int(ceil(len(cipher_text)/len(key))))]
+    k=0
+    for i in range(int(ceil(len(cipher_text)/len(key)))):
+        for j in range(len(key)):
+                cipher_text_list[i][j]=cipher_text_list2[i][key_inverse[j]-1].lower()
+                k=k+1
+    plain_text=""
+    k=0
+    for i in range(int(ceil(len(cipher_text)/len(key)))):
+        for j in range(len(key)):
+            try:
+                plain_text+=cipher_text_list[i][j].lower()
+                k=k+1
+            except:
+                continue
+    return plain_text
+
+
 @app.route("/")
 @app.route("/homepage")
 def homepage():
@@ -237,6 +408,26 @@ def decrypttext():
 @app.route("/cryptoanalysis")
 def cryptoanalysis():
     return render_template("cryptoanalysis.html")
+
+@app.route("/vigdec")
+def vigdec():
+    return render_template("vigdec.html")
+
+@app.route("/monodec")
+def monodec():
+    return render_template("monodec.html")
+
+@app.route("/hilldec")
+def hilldec():
+    return render_template("hilldec.html")
+
+@app.route("/transpositiondec")
+def transpositiondec():
+    return render_template("transpositiondec.html")
+
+@app.route("/affinedec")
+def affinedec():
+    return render_template("affinedec.html")
 
 @app.route("/encrypt",methods=['GET','POST'])
 def encrypt():
@@ -298,16 +489,57 @@ def shiftdec():
 @app.route("/decrypt",methods=['GET','POST'])
 def decrypt():
     output=request.form.to_dict()
-    value=output["value"]
-    key=output["key"]
-    ciphermethod=output["ciphermethod"]
+    value=output.get("value")
+    key=output.get("key")
+    key2=output.get("key2")
+    keysize=output.get("keysize")
+    ciphermethod=output.get("ciphermethod")
+    a=0
     if(ciphermethod=="Shift cipher"):
         d1=shiftcipherdec(value,key)
+        a=1
     elif(ciphermethod=="Caeser cipher"):
         d1=shiftcipherdec(value,3)
+        a=1
+    elif(ciphermethod=="Vignere cipher"):
+        d1=vigdecryption(value,key)
+        a=2
+    elif(ciphermethod=="Monoalphabetic Substitution cipher"):
+        d1=monodecryption(value,key)
+        a=3
+    elif(ciphermethod=="Affine cipher"):
+        d1=affinedecryption(value,key,key2)
+        if(d1=="invalid!"):
+            return render_template("affinedec.html")
+        else:
+            return render_template("affinedec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+    elif(ciphermethod=="Hill cipher"):
+        d1=hilldecryption(value,keysize,key)
+        a=4
+    elif(ciphermethod=="Rail fence cipher"):
+        d1=railfencedec(value)
+        a=5
+    elif(ciphermethod=="keyless transposition cipher with fixed number of columns"):
+        d1=keylesscipherdec(value,key)
+        a=5
+    elif(ciphermethod=="Permutation transposition cipher"):
+        d1=permutationcipherdec(value,key)
+        a=5
+    elif(ciphermethod=="Combined approach(key+keyless)"):
+        d1=combinedapproachcipherdec(value,key)
+        a=5
     else:
         d1="test"
-    return render_template("shiftdec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+    if(a==1):
+        return render_template("shiftdec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+    elif(a==2):
+        return render_template("vigdec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+    elif(a==3):
+        return render_template("monodec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod) 
+    elif(a==4):
+        return render_template("hilldec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+    elif(a==5):
+        return render_template("transpositiondec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
 
 if __name__=='__main__':
     app.run(debug=True,port=5000)

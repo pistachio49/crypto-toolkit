@@ -13,6 +13,9 @@ def GCD(x,y):
 
 def affinecipher(val,k1,k2):
     key1=int(k1)
+    val_org=val
+    val=val.lower()
+    val=val.replace(" ","")
     if(GCD(key1,26)!=1):
         return "invalid"
     key2=int(k2)
@@ -31,7 +34,13 @@ def affinecipher(val,k1,k2):
     if GCD(key1,26)==1:
         for p in plain_text:
             cipher_text+=decryption_val[((encryption_val[p]*key1)+key2)%26]
-
+    cipher_text = list(cipher_text)
+    for i in range(len(val_org)):
+        if val_org[i]==" ":
+            cipher_text.insert(i, " ")
+        elif val_org[i].islower():
+            cipher_text[i]=cipher_text[i].lower()
+    cipher_text = ''.join(cipher_text)
     return cipher_text
 
 def simplecipher(value1,key1):
@@ -73,7 +82,7 @@ def hillcipherenc(val,keysize,key1):
     key_size=int(keysize)
     key=key1.lower()
     count=0
-    if(keysize**2!=len(key)):
+    if(key_size**2!=len(key)):
         pass
     if (len(plain_text)%key_size!=0):
         count=key_size-len(plain_text)%key_size

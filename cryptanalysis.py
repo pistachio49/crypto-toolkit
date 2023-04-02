@@ -112,7 +112,7 @@ def affinecrypt1(ctext):
 
 def hillcrypt1(ctext,ptext,keysize):
     try:
-        plain_text=ptext.lower()
+        plain_text=ptext.lower().replace(" ","")
         cipher_text=ctext.upper()
         key_size=int(keysize)
         plain_text=plain_text[:key_size*key_size]

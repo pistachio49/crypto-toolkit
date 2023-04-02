@@ -34,10 +34,14 @@ HILL:
 	boguz characters will be added (eg: z, yz, xyz, wxyz) as required
 	
 	DECRYPTION:
+	ciphertext must be a multiple of the key matrix size
 	key size = size of key matrix
 	key = alphabetic characters only with length key size*2, key should be necessarily invertible. if non invertible matrix added then show error message.
 	cipher text = alphabets 
 	boguz characters will be added (eg: z, yz, xyz, wxyz) as required
+	
+	CRYPTANALYSIS:
+	plain and cipher text should be alphabets.
 	
 		
 

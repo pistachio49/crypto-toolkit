@@ -43,6 +43,21 @@ HILL:
 	CRYPTANALYSIS:
 	plain and cipher text should be alphabets.
 	
+SHIFT/CAESER:
+	Caeser cipher is choosen then key should not be present:
+	ENCRYPTION:
+	plain text = alphabets 
+	key = numericals
+	
+	DECRYPTION:
+	cipher text = alphabets 
+	key = numericals
+	
+	CRYPTANALYSIS:
+	cipher text = alphabets
+	//no need of ceaser cipher crypt analysis in cryptanalysis page
+	
+	
 		
 
    

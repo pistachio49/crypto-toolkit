@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request
-from sympy import Matrix
+from sympy import Matrix,Transpose
 import numpy as np
 from math import ceil
 from numpy import array
@@ -79,11 +79,13 @@ def shiftcipherdec(value1,key1):
     return plain_text
 
 def hillcipherenc(val,keysize,key1):
+    val_org=val
+    val=val.replace(" ","")
     plain_text=val.lower()
     key_size=int(keysize)
     key=key1.lower()
     count=0
-    if(keysize**2!=len(key)):
+    if(key_size**2!=len(key)):
         pass
     if (len(plain_text)%key_size!=0):
         count=key_size-len(plain_text)%key_size
@@ -108,6 +110,13 @@ def hillcipherenc(val,keysize,key1):
     cipher_text=""
     for c in list(cipher_matrix):
         cipher_text+=chr(65+c)
+    cipher_text = list(cipher_text)
+    for i in range(len(val_org)):
+        if val_org[i]==" ":
+            cipher_text.insert(i, " ")
+        elif val_org[i].islower():
+            cipher_text[i]=cipher_text[i].lower()
+    cipher_text = ''.join(cipher_text)
     return cipher_text
 
 def railfencecipher(val):
@@ -268,6 +277,8 @@ def vigdecryption(value,key1):
     return plain_text
 
 def hilldecryption(value,keysize,key1):
+    val_org=value
+    value=value.replace(" ","")
     cipher_text=value.upper()
     key_size=int(keysize)
     key=key1.lower()
@@ -285,11 +296,20 @@ def hilldecryption(value,keysize,key1):
         if len(row)==key_size:
             key_matrix.append(row)
             row=[]
+    print(Matrix(key_matrix))
     invkey_matrix=Matrix(key_matrix).inv_mod(26)
-    plain_matrix=(Matrix(cipher_matrix)*invkey_matrix%26)
+    print(invkey_matrix)
+    plain_matrix=((invkey_matrix*Transpose(Matrix(cipher_matrix)))%26)
     plain_text=""
     for p in list(plain_matrix):
         plain_text+=chr(p+97)
+    plain_text = list(plain_text)
+    for i in range(len(val_org)):
+        if val_org[i]==" ":
+            plain_text.insert(i, " ")
+        elif val_org[i].isupper():
+            plain_text[i]=plain_text[i].upper()
+    plain_text = ''.join(plain_text)
     return plain_text
 
 def railfencedec(value):

@@ -7,7 +7,8 @@ numpy
 python3 app.py to run the server
 
 
-
+Everytime if numerical appear in plain/cipher text error message popup
+Everytime if a blank column is present error message popup
 Message box: 
 AFFINE:
 	ENCRYPTION:
@@ -25,8 +26,19 @@ AFFINE:
 	
 	
 HILL:
-key size = size of key matrix
-key = alphabetic characters
 
+	ENCRYPTION:
+	key size = size of key matrix
+	key = alphabetic characters only with length key size*2
+	plain text = alphabets 
+	boguz characters will be added (eg: z, yz, xyz, wxyz) as required
+	
+	DECRYPTION:
+	key size = size of key matrix
+	key = alphabetic characters only with length key size*2, key should be necessarily invertible. if non invertible matrix added then show error message.
+	cipher text = alphabets 
+	boguz characters will be added (eg: z, yz, xyz, wxyz) as required
+	
+		
 
    

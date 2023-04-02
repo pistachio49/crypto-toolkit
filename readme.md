@@ -11,12 +11,15 @@ python3 app.py to run the server
 Message box: 
 AFFINE:
 	ENCRYPTION:
-	plain text should be alphabetic characters in small letters.Numericals are not allowed in plain text. Key1 should have multiplicative inverse in modulo 26.
+	plain text should be alphabetic characters.Numericals are not allowed in plain text. Key1 should have multiplicative inverse in modulo 26.
 
 	DECRYPTION:
-	Do 
+	cipher text should be alphabetic characters.Numericals are not allowed in plain text. Key1 should have multiplicative inverse in modulo 26.
+
 	
 	CRYPTANALYSIS:
+	updated words list with more words?
+	
 	
 HILL:
 key size = size of key matrix

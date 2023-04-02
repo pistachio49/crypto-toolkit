@@ -93,6 +93,7 @@ def affinecrypt1(ctext):
                     possible_plaintexts.append(word)
                 j+=1
     count=Counter(possible_plaintexts)
+    print(count.most_common())
     if(len(count)!=0):
         for key,times in count.most_common():
             print(key,"occurs",times,"times with key pair",plain_keypairs[key])

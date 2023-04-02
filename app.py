@@ -45,25 +45,37 @@ def affinecipher(val,k1,k2):
     return cipher_text
 
 def simplecipher(value1,key1):
-    plain_text=value1.lower()
+    plain_text=value1.lower().replace(" ","")
     key=key1.upper()
     cipher_text=""
     for p in plain_text:
         cipher_text+=key[ord(p)%97]
+    for i in range(len(value1)):
+        if value1[i]==" ":
+            cipher_text.insert(i, " ")
+        elif value1[i].islower():
+            cipher_text[i]=cipher_text[i].lower()
+    cipher_text = ''.join(cipher_text)
     return cipher_text
 
 def vignerecipher(value1,key1):
-    plain_text=value1.lower()
+    plain_text=value1.lower().replace(" ","")
     key=key1.upper()
     cipher_text=""
     j=0
     for p in plain_text:
-        cipher_text+=chr(65+(ord(p)%97-ord(key[j])%65)%26)
+        cipher_text+=chr(65+(ord(p)%97+ord(key[j])%65)%26)
         j=(j+1)%len(key)
+    cipher_text = list(cipher_text)
+    for i in range(len(value1)):
+        if value1[i]==" ":
+            cipher_text.insert(i, " ")
+        elif value1[i].islower():
+            cipher_text[i]=cipher_text[i].lower()
+    cipher_text = ''.join(cipher_text)
     return cipher_text
 
 def shiftcipher(value1,key1):
-    val_org=value1
     value1=value1.lower().replace(" ","")
     key=int(key1)
     plain_text=value1.lower()
@@ -71,10 +83,10 @@ def shiftcipher(value1,key1):
     for p in plain_text:
         cipher_text+=chr(((ord(p)%97+key)%26)+65)
     cipher_text = list(cipher_text)
-    for i in range(len(val_org)):
-        if val_org[i]==" ":
+    for i in range(len(value1)):
+        if value1[i]==" ":
             cipher_text.insert(i, " ")
-        elif val_org[i].islower():
+        elif value1[i].islower():
             cipher_text[i]=cipher_text[i].lower()
     cipher_text = ''.join(cipher_text)
     return cipher_text
@@ -284,13 +296,20 @@ def monodecryption(value,key1):
     return plain_text
 
 def vigdecryption(value,key1):
-    cipher_text=value.upper()
+    cipher_text=value.upper().replace(" ","")
     key=key1.upper()
     plain_text=""
     j=0
     for c in cipher_text:
         plain_text+=chr(97+(ord(c)%65-ord(key[j])%65)%26)
         j=(j+1)%len(key)
+    plain_text = list(plain_text)
+    for i in range(len(value)):
+        if value[i]==" ":
+            plain_text.insert(i, " ")
+        elif value[i].isupper():
+            plain_text[i]=plain_text[i].upper()
+    plain_text = ''.join(plain_text)
     return plain_text
 
 def hilldecryption(value,keysize,key1):

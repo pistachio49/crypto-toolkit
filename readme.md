@@ -56,7 +56,24 @@ SHIFT/CAESER:
 	CRYPTANALYSIS:
 	cipher text = alphabets
 	//no need of ceaser cipher crypt analysis in cryptanalysis page
+
+VIGENERE CIPHER:
+	Ensure naming is correct "Vigenere"
+	ENCRYPTION:
+	plain text = alphabets
+	key = alphabets
 	
+	ERROR:
+	recheck everything !!
+	after encryption reach shift cipher page
+	
+	DECRYPTION:
+	cipher text = alphabets
+	key = alphabets
+	
+	
+	
+
 	
 		
 

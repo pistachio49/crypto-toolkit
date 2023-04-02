@@ -57,6 +57,7 @@ def shiftcrypt1(ctext):
         return "invalid!"
 
 def affinecrypt1(ctext):
+    ctext=ctext.replace(" ","")
     cipher_text=ctext.upper()
     encryption_val={}
     ind=0
@@ -78,14 +79,13 @@ def affinecrypt1(ctext):
                 plain_text+=decryption_val[((encryption_val[c.lower()]-key2)*(inverse[key1]))%26].lower()
             list_plaintext.append(plain_text)
             plain_keypairs[plain_text]=(key1,key2)
-    #print(list_plaintext)
     words_list=open('wordslist.txt','r').read().split('\n')
     l=len(cipher_text)
     possible_words=[]
     possible_plaintexts=[]
     for word in list_plaintext:
         for i in range(l):
-            j=i+4 #length of word>3
+            j=i+2 #length of word>3
             while j<l+1:
                 substring=word[i:j].lower()
                 if substring in words_list:
@@ -93,12 +93,19 @@ def affinecrypt1(ctext):
                     possible_plaintexts.append(word)
                 j+=1
     count=Counter(possible_plaintexts)
-    print(count.most_common())
+    
     if(len(count)!=0):
+        print(count.most_common())
+        # most_time=count.most_common()[0][1]
+        # print(most_time)
         for key,times in count.most_common():
             print(key,"occurs",times,"times with key pair",plain_keypairs[key])
+            # if (times == most_time):
+            #     print(key,"-->this")
         print("most common string:",count.most_common()[0][0])
         print("key pair:", plain_keypairs[count.most_common()[0][0]])
+        # want to return all possible values which repeats 
+        # same no.of times but maximum times
         return [count.most_common()[0][0],plain_keypairs[count.most_common()[0][0]]]
     else:
         return "invalid!"

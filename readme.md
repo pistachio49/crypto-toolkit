@@ -18,7 +18,10 @@ AFFINE:
 
 	
 	CRYPTANALYSIS:
+	message :cipher text = alphabets only 
+	doubt and correction:
 	updated words list with more words?
+	analyse cryptanalysis.py file and make changes as mentioned.
 	
 	
 HILL:

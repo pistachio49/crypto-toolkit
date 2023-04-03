@@ -6,11 +6,11 @@ from math import ceil
 from numpy import array
 
 def monocrypt1(ctext,ptext):
-    plain_text=ptext.lower()
-    cipher_text=ctext.upper()
+    plain_text=ptext.lower().replace(" ","")
+    cipher_text=ctext.upper().replace(" ","")
     len1=len(plain_text)
     len2=len(cipher_text)
-    if ((len1==len2) and (len2==26)):
+    if ((len1==len2)):
         unsorted_keys={}
         ind=0
         for p in plain_text:

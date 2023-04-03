@@ -71,6 +71,20 @@ VIGENERE CIPHER:
 	cipher text = alphabets
 	key = alphabets
 	
+	CRYPTANALYSIS:
+	Need to recheck the code
+
+Monoalphabetic Substitution cipher:
+	
+	ENCRYPTION:
+	Plain text: alphabets
+	Key: alphabets only with 26 characters present necessarily 
+	
+	DECRYPTION:
+	Cipher text: alphabets
+	Key: alphabets only with 26 characters present necessarily 
+	
+	CRYPTANALYSIS
 	
 	
 

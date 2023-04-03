@@ -50,6 +50,7 @@ def simplecipher(value1,key1):
     cipher_text=""
     for p in plain_text:
         cipher_text+=key[ord(p)%97]
+    cipher_text = list(cipher_text)
     for i in range(len(value1)):
         if value1[i]==" ":
             cipher_text.insert(i, " ")
@@ -60,7 +61,7 @@ def simplecipher(value1,key1):
 
 def vignerecipher(value1,key1):
     plain_text=value1.lower().replace(" ","")
-    key=key1.upper()
+    key=key1.upper().replace(" ","")
     cipher_text=""
     j=0
     for p in plain_text:
@@ -288,16 +289,23 @@ def affinedecryption(value,key11,key12):
     return plain_text
 
 def monodecryption(value,key1):
-    cipher_text=value.upper()
-    key=key1.upper()
+    cipher_text=value.upper().replace(" ","")
+    key=key1.upper().replace(" ","")
     plain_text=""
     for c in cipher_text:
         plain_text+=chr(97+key.index(str(c)))
+    plain_text = list(plain_text)
+    for i in range(len(value)):
+        if value[i]==" ":
+            plain_text.insert(i, " ")
+        elif value[i].isupper():
+            plain_text[i]=plain_text[i].upper()
+    plain_text = ''.join(plain_text)
     return plain_text
 
 def vigdecryption(value,key1):
     cipher_text=value.upper().replace(" ","")
-    key=key1.upper()
+    key=key1.upper().replace(" ","")
     plain_text=""
     j=0
     for c in cipher_text:

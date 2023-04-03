@@ -84,8 +84,44 @@ Monoalphabetic Substitution cipher:
 	Cipher text: alphabets
 	Key: alphabets only with 26 characters present necessarily 
 	
-	CRYPTANALYSIS
+	CRYPTANALYSIS:
+	need changes
+
+
+TRANSPOSITION:
 	
+	ENCRYPTION:
+	plain text= alphabets only without spaces
+	Number of Columns : numbers only
+	
+	DECRYPTION:
+	cipher  text    text= alphabets only without spaces
+	Number of Columns : numbers only
+	
+   PERMUTATION CIPHER:
+   	ENCRYPTION:
+   	Message: Boguz characters are added (like z,yz,xyz,..)
+   	Plain text: alphabets are only allowed
+	Key: should be space separated numericals. and they should have (numericals in 1 2 3 4... check in front end)
+	
+	DECRYPTION:
+	Message: key size should be a multiple of cipher text size
+	Cipher text text: alphabets are only allowed
+	Key: should be space separated numericals. and they should have (numericals in 1 2 3 4... check in front end)
+	
+   COMBINED APPROACH:
+   	ENCRYPTION: 
+   	Message: Boguz characters are added (like z,yz,xyz,..)
+   	Plain text: alphabets are only allowed
+	Key: should be space separated numericals. and they should have (numericals in 1 2 3 4... check in front end)
+	
+	DECRYPTION:
+	Message: key size should be a multiple of cipher text size
+	Cipher text text: alphabets are only allowed
+	Key: should be space separated numericals. and they should have (numericals in 1 2 3 4... check in front end)
+	
+	
+		
 	
 
 	

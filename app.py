@@ -150,7 +150,7 @@ def hillcipherenc(val,keysize,key1):
     return cipher_text
 
 def railfencecipher(val):
-    plain_text=val.lower()
+    plain_text=val.lower().replace(" ","")
     cipher_1=""
     cipher_2=""
     for i in range(len(plain_text)):
@@ -162,7 +162,7 @@ def railfencecipher(val):
     return cipher_text
 
 def keylesscipher(val,columnno):
-    plain_text=val.lower()
+    plain_text=val.lower().replace(" ","")
     column=int(columnno)
     plain_text_list=[[-1]*column for i in range(int(ceil(len(plain_text)/(column))))]
     k=0
@@ -183,7 +183,7 @@ def keylesscipher(val,columnno):
     return cipher_text
 
 def permutationcipher(val,key):
-    plain_text=val.lower()
+    plain_text=val.lower().replace(" ","")
     x=key
     key=[int(i) for i in x.split(" ")]
     count=0
@@ -213,7 +213,7 @@ def permutationcipher(val,key):
     return cipher_text
 
 def combinedapproachcipher(val,key):
-    plain_text=val.lower()
+    plain_text=val.lower().replace(" ","")
     x=key
     key=[int(i) for i in x.split(" ")]
     count=0
@@ -357,7 +357,7 @@ def hilldecryption(value,keysize,key1):
     return plain_text
 
 def railfencedec(value):
-    cipher_text=value.upper()
+    cipher_text=value.upper().replace(" ","")
     plain_1=""
     plain_2=""
     plain_text=""
@@ -375,7 +375,7 @@ def railfencedec(value):
     return plain_text
 
 def keylesscipherdec(value,key1):
-    cipher_text=value.upper()
+    cipher_text=value.upper().replace(" ","")
     column=int(key1)
     cipher_text_list=[[-1]*column for i in range(int(ceil(len(cipher_text)/column)))]
     k=0
@@ -397,7 +397,7 @@ def keylesscipherdec(value,key1):
     return plain_text
 
 def permutationcipherdec(value,key1):
-    cipher_text=value.upper()
+    cipher_text=value.upper().replace(" ","")
     x=key1
     key=[int(i) for i in x.split(" ")]
     key_inverse=[-1]*len(key)
@@ -424,7 +424,7 @@ def permutationcipherdec(value,key1):
 
 
 def combinedapproachcipherdec(value,key1):
-    cipher_text=value.upper()
+    cipher_text=value.upper().replace(" ","")
     x=key1
     key=[int(i) for i in x.split(" ")]
     key_inverse=[-1]*len(key)

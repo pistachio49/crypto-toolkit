@@ -21,7 +21,7 @@ def checkspace1(val):
 
 #transposition cipher
 def transpositionvalid(k,dec,ciphert):
-    if(checkspace1(k)==False or k[0]!='1'):
+    if(checkspace1(k)==False):
         return "Enter a valid key"
     else:
         c=len(k)-1
@@ -32,6 +32,9 @@ def transpositionvalid(k,dec,ciphert):
                 break
         k=k[0:c+1]        
         lst=k.split(' ')
+        lst.sort()
+        if(lst[0]!='1'):
+            return "enter a valid key"
         # print(lst)
         for a in lst:
             if(a.isdigit()==False):

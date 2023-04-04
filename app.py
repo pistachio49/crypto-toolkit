@@ -5,6 +5,7 @@ from math import ceil
 from numpy import array
 from cryptanalysis import *
 from vigcryptanalysis import *
+from validations import *
 
 app=Flask(__name__)
 def GCD(x,y):
@@ -13,6 +14,8 @@ def GCD(x,y):
     return x
 
 def affinecipher(val,k1,k2):
+    if(checkspace(val)==False):
+        return "numerical!"
     key1=int(k1)%26
     val_org=val
     val=val.lower()
@@ -45,6 +48,8 @@ def affinecipher(val,k1,k2):
     return cipher_text
 
 def simplecipher(value1,key1):
+    if(checkspace(value1)==False):
+        return "numerical!"
     plain_text=value1.lower().replace(" ","")
     key=key1.upper()
     cipher_text=""
@@ -60,6 +65,8 @@ def simplecipher(value1,key1):
     return cipher_text
 
 def vignerecipher(value1,key1):
+    if(checkspace(value1)==False):
+        return "numerical!"
     plain_text=value1.lower().replace(" ","")
     key=key1.upper().replace(" ","")
     cipher_text=""
@@ -77,6 +84,8 @@ def vignerecipher(value1,key1):
     return cipher_text
 
 def shiftcipher(value1,key1):
+    if(checkspace(value1)==False):
+        return "numerical!"
     value1=value1.lower().replace(" ","")
     key=int(key1)
     plain_text=value1.lower()
@@ -93,6 +102,8 @@ def shiftcipher(value1,key1):
     return cipher_text
 
 def shiftcipherdec(value1,key1):
+    if(checkspace(value1)==False):
+        return "numerical!"
     key=int(key1)
     val_org=value1
     cipher_text=value1.upper().replace(" ","")
@@ -109,6 +120,8 @@ def shiftcipherdec(value1,key1):
     return plain_text
 
 def hillcipherenc(val,keysize,key1):
+    if(checkspace(val)==False):
+        return "numerical!"
     val_org=val
     val=val.replace(" ","")
     plain_text=val.lower()
@@ -150,6 +163,8 @@ def hillcipherenc(val,keysize,key1):
     return cipher_text
 
 def railfencecipher(val):
+    if(checkspace(val)==False):
+        return "numerical!"
     plain_text=val.lower().replace(" ","")
     cipher_1=""
     cipher_2=""
@@ -162,6 +177,8 @@ def railfencecipher(val):
     return cipher_text
 
 def keylesscipher(val,columnno):
+    if(checkspace(val)==False):
+        return "numerical!"
     plain_text=val.lower().replace(" ","")
     column=int(columnno)
     plain_text_list=[[-1]*column for i in range(int(ceil(len(plain_text)/(column))))]
@@ -183,6 +200,8 @@ def keylesscipher(val,columnno):
     return cipher_text
 
 def permutationcipher(val,key):
+    if(checkspace(val)==False):
+        return "numerical!"
     plain_text=val.lower().replace(" ","")
     x=key
     key=[int(i) for i in x.split(" ")]
@@ -213,6 +232,8 @@ def permutationcipher(val,key):
     return cipher_text
 
 def combinedapproachcipher(val,key):
+    if(checkspace(val)==False):
+        return "numerical!"
     plain_text=val.lower().replace(" ","")
     x=key
     key=[int(i) for i in x.split(" ")]
@@ -257,6 +278,8 @@ def modularMultiplicativeInverse(x,y):
 
 
 def affinedecryption(value,key11,key12):
+    if(checkspace(value)==False):
+        return "numerical!"
     key1=int(key11)%26
     val_org= value
     value=value.replace(" ","")
@@ -289,6 +312,8 @@ def affinedecryption(value,key11,key12):
     return plain_text
 
 def monodecryption(value,key1):
+    if(checkspace(value)==False):
+        return "numerical!"
     cipher_text=value.upper().replace(" ","")
     key=key1.upper().replace(" ","")
     plain_text=""
@@ -304,6 +329,8 @@ def monodecryption(value,key1):
     return plain_text
 
 def vigdecryption(value,key1):
+    if(checkspace(value)==False):
+        return "numerical!"
     cipher_text=value.upper().replace(" ","")
     key=key1.upper().replace(" ","")
     plain_text=""
@@ -321,6 +348,8 @@ def vigdecryption(value,key1):
     return plain_text
 
 def hilldecryption(value,keysize,key1):
+    if(checkspace(value)==False):
+        return "numerical!"
     val_org=value
     value=value.replace(" ","")
     cipher_text=value.upper()
@@ -357,6 +386,8 @@ def hilldecryption(value,keysize,key1):
     return plain_text
 
 def railfencedec(value):
+    if(checkspace(value)==False):
+        return "numerical!"
     cipher_text=value.upper().replace(" ","")
     plain_1=""
     plain_2=""
@@ -375,6 +406,8 @@ def railfencedec(value):
     return plain_text
 
 def keylesscipherdec(value,key1):
+    if(checkspace(value)==False):
+        return "numerical!"
     cipher_text=value.upper().replace(" ","")
     column=int(key1)
     cipher_text_list=[[-1]*column for i in range(int(ceil(len(cipher_text)/column)))]
@@ -397,6 +430,8 @@ def keylesscipherdec(value,key1):
     return plain_text
 
 def permutationcipherdec(value,key1):
+    if(checkspace(value)==False):
+        return "numerical!"
     cipher_text=value.upper().replace(" ","")
     x=key1
     key=[int(i) for i in x.split(" ")]
@@ -424,6 +459,8 @@ def permutationcipherdec(value,key1):
 
 
 def combinedapproachcipherdec(value,key1):
+    if(checkspace(value)==False):
+        return "numerical!"
     cipher_text=value.upper().replace(" ","")
     x=key1
     key=[int(i) for i in x.split(" ")]
@@ -565,35 +602,79 @@ def encrypt():
     a=0
     if(ciphermethod=="Shift cipher"):
         d1=shiftcipher(value,key)
+        if(d1=="numerical!"):
+            return render_template("encryption.html",err="Plain text should only consist of alphabets")
         a=1
     elif(ciphermethod=="Caeser cipher"):
         d1=shiftcipher(value,3)
+        if(d1=="numerical!"):
+            return render_template("caeserenc.html",err="Plain text should only consist of alphabets")
         a=10
     elif(ciphermethod=="Vigenere cipher"):
+        if(key.isalpha()==False):
+            return render_template("vignere.html",err="The Key should only consist of alphabets")
         d1=vignerecipher(value,key)
+        if(d1=="numerical!"):
+            return render_template("vignere.html",err="Plain text should only consist of alphabets")
         a=2
     elif(ciphermethod=="Monoalphabetic Substitution cipher"):
+        if(monovalidation(key)==False):
+            return render_template("monoenc.html",err="The Key must have 26 characters")
         d1=simplecipher(value,key)
+        if(d1=="numerical!"):
+            return render_template("monoenc.html",err="Plain text should only consist of alphabets")
         a=12
     elif(ciphermethod=="Affine cipher"):
         d1=affinecipher(value,key,key2)
+        if(d1=="numerical!"):
+            return render_template("affine.html",err="Plain text should only consist of alphabets")
         if(d1=="invalid"):
-            return render_template("affine.html",err=True)
+            return render_template("affine.html",err="Please enter a valid multiplicative key")
         else:
             return render_template("affine.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
     elif(ciphermethod=="Hill cipher"):
         d1=hillcipherenc(value,keysize,key)
+        if(d1=="numerical!"):
+            return render_template("hill.html",err="Plain text should only consist of alphabets")
         a=3
     elif(ciphermethod=="Rail fence cipher"):
+        if(value.isalpha()==False):
+            return render_template("transposition.html",err="The Cipher Text must consist only of alphabets without spaces")
         d1=railfencecipher(value)
         a=4
     elif(ciphermethod=="keyless transposition cipher with fixed number of columns"):
+        if(value.isalpha()==False):
+            return render_template("transposition.html",err="The Cipher Text must consist only of alphabets without spaces")
         d1=keylesscipher(value,key)
         a=4
     elif(ciphermethod=="Permutation transposition cipher"):
+        if(value.isalpha()==False):
+            return render_template("transposition.html",err="The Cipher Text must consist only of alphabets without spaces")
+        if(transpositionvalid(key,False,value)!="valid!"):
+            p=transpositionvalid(key,False,value)
+            return render_template("transposition.html",err=p)
+        c=len(key)-1
+        while(c!=-1):
+            if(key[c]==' '):
+                c=c-1
+            else:
+                break
+        key=key[0:c+1]  
         d1=permutationcipher(value,key)
         a=4
     elif(ciphermethod=="Combined approach(key+keyless)"):
+        if(value.isalpha()==False):
+            return render_template("transposition.html",err="The Cipher Text must consist only of alphabets without spaces")
+        if(transpositionvalid(key,False,value)!="valid!"):
+            p=transpositionvalid(key,False,value)
+            return render_template("transposition.html",err=p)
+        c=len(key)-1
+        while(c!=-1):
+            if(key[c]==' '):
+                c=c-1
+            else:
+                break
+        key=key[0:c+1]  
         d1=combinedapproachcipher(value,key)
         a=4
     else:
@@ -627,35 +708,79 @@ def decrypt():
     a=0
     if(ciphermethod=="Shift cipher"):
         d1=shiftcipherdec(value,key)
+        if(d1=="numerical!"):
+            return render_template("shiftdec.html",err="The Cipher Text must consist only of alphabets")
         a=1
     elif(ciphermethod=="Caeser cipher"):
         d1=shiftcipherdec(value,3)
+        if(d1=="numerical!"):
+            return render_template("caeserdec.html",err="The Cipher Text must consist only of alphabets")
         a=10
     elif(ciphermethod=="Vigenere cipher"):
+        if(key.isalpha()==False):
+            return render_template("vignere.html",err="The Key should only consist of alphabets")
         d1=vigdecryption(value,key)
+        if(d1=="numerical!"):
+            return render_template("vigdec.html",err="The Cipher Text must consist only of alphabets")
         a=2
     elif(ciphermethod=="Monoalphabetic Substitution cipher"):
+        if(monovalidation(key)==False):
+            return render_template("monodec.html",err="The key must have 26 characters")
         d1=monodecryption(value,key)
+        if(d1=="numerical!"):
+            return render_template("monodec.html",err="The Cipher Text must consist only of alphabets")
         a=3
     elif(ciphermethod=="Affine cipher"):
         d1=affinedecryption(value,key,key2)
+        if(d1=="numerical!"):
+            return render_template("affinedec.html",err="The Cipher Text must consist only of alphabets")
         if(d1=="invalid!"):
-            return render_template("affinedec.html",err=True)
+            return render_template("affinedec.html",err="Please enter a valid multiplicative key")
         else:
             return render_template("affinedec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
     elif(ciphermethod=="Hill cipher"):
         d1=hilldecryption(value,keysize,key)
+        if(d1=="numerical!"):
+            return render_template("hilldec.html",err="The Cipher Text must consist only of alphabets")
         a=4
     elif(ciphermethod=="Rail fence cipher"):
+        if(value.isalpha()==False):
+            return render_template("transpositiondec.html",err="The Cipher Text must consist only of alphabets without spaces")
         d1=railfencedec(value)
         a=5
     elif(ciphermethod=="keyless transposition cipher with fixed number of columns"):
+        if(value.isalpha()==False):
+            return render_template("transpositiondec.html",err="The Cipher Text must consist only of alphabets without spaces")
         d1=keylesscipherdec(value,key)
         a=5
     elif(ciphermethod=="Permutation transposition cipher"):
+        if(value.isalpha()==False):
+            return render_template("transpositiondec.html",err="The Cipher Text must consist only of alphabets without spaces")
+        if(transpositionvalid(key,True,value)!="valid!"):
+            p=transpositionvalid(key,True,value)
+            return render_template("transpositiondec.html",err=p)
+        c=len(key)-1
+        while(c!=-1):
+            if(key[c]==' '):
+                c=c-1
+            else:
+                break
+        key=key[0:c+1]    
         d1=permutationcipherdec(value,key)
         a=5
     elif(ciphermethod=="Combined approach(key+keyless)"):
+        if(value.isalpha()==False):
+            return render_template("transpositiondec.html",err="The Cipher Text must consist only of alphabets without spaces")
+        if(transpositionvalid(key,True,value)!="valid!"):
+            p=transpositionvalid(key,True,value)
+            return render_template("transpositiondec.html",err=p)
+        c=len(key)-1
+        while(c!=-1):
+            if(key[c]==' '):
+                c=c-1
+            else:
+                break
+        key=key[0:c+1]  
         d1=combinedapproachcipherdec(value,key)
         a=5
     else:
@@ -669,7 +794,7 @@ def decrypt():
     elif(a==4):
         return render_template("hilldec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
     elif(a==10):
-        return render_template("caeserenc.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+        return render_template("caeserdec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
     elif(a==5):
         return render_template("transpositiondec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
 
@@ -691,14 +816,18 @@ def crypt():
         else:
             return render_template("monocrypt.html",value=d1,inputvalue=value,ciphermethod=ciphermethod) 
     elif(ciphermethod=="Shift cipher"):
+        if(value.isalpha()==False):
+            return render_template("shiftcrypt.html",err="The Cipher Text must consist only of alphabets")
         d1=shiftcrypt1(value)
         return render_template("shiftcrypt.html",value=d1[0],key=d1[1]) 
     elif(ciphermethod=="Affine cipher"):
+        if(value.isalpha()==False):
+            return render_template("affinecrypt.html",err="The Cipher Text must consist only of alphabets")
         d1=affinecrypt1(value)
         if(d1!="invalid!"):
             return render_template("affinecrypt.html",value=d1[0],key=d1[1])
         else:
-            return render_template("affinecrypt.html",err=True)
+            return render_template("affinecrypt.html",err="valid word is not present in the used wordlist")
     elif(ciphermethod=="Hill cipher"):
         d1=hillcrypt1(value,key,keysize)
         if(d1!="invalid!"):

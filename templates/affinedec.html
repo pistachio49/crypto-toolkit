@@ -22,7 +22,7 @@
             <span>The decrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
             "{{value}}"
             {% elif err %}
-            <span>Please enter a valid multiplicative key</span>
+            <span>{{err}}</span>
             {% endif %}
         </div>
         <script>

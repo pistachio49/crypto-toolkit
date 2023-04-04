@@ -12,6 +12,8 @@ Everytime if a blank column is present error message popup
 
 Message box: 
 AFFINE:
+
+	It is done
 	ENCRYPTION:
 	plain text should be alphabetic characters.Numericals are not allowed in plain text. Key1 should have multiplicative inverse in modulo 26.
 
@@ -27,11 +29,11 @@ AFFINE:
 	
 	
 HILL:
-
+	//update on python side
 	ENCRYPTION:
 	key size = size of key matrix
 	key = alphabetic characters only with length key size*2
-	plain text = alphabets 							//update on python side
+	plain text = alphabets 							
 	boguz characters will be added (eg: z, yz, xyz, wxyz) as required
 	
 	DECRYPTION:
@@ -45,6 +47,9 @@ HILL:
 	plain and cipher text should be alphabets.
 	
 SHIFT/CAESER:
+
+	It is done
+	
 	Caeser cipher is choosen then key should not be present:
 	ENCRYPTION:
 	plain text = alphabets 
@@ -59,6 +64,9 @@ SHIFT/CAESER:
 	//no need of ceaser cipher crypt analysis in cryptanalysis page
 
 VIGENERE CIPHER:
+
+	It is done
+	
 	Ensure naming is correct "Vigenere"
 	ENCRYPTION:
 	plain text = alphabets
@@ -76,6 +84,9 @@ VIGENERE CIPHER:
 	Need to recheck the code
 
 Monoalphabetic Substitution cipher:
+	
+	It is done
+	
 	
 	ENCRYPTION:
 	Plain text: alphabets

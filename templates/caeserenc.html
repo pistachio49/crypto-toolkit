@@ -16,6 +16,8 @@
             {%if value %}
             <span>The Encrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
             "{{value}}"
+            {% elif err %}
+            <span>{{err}}</span>
             {% endif %}
         </div>
         <script>

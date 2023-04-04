@@ -18,8 +18,8 @@
             <span>The most common text is : {{value}} </span>
             <br><br>
             <span>The key is : {{key}} </span>
-            {% else %}
-            valid word is not present in the used wordlist
+            {% elif err %}
+            <span>{{err}}</span>
             {% endif %}
         </div>
         <script>

@@ -1,27 +1,21 @@
 <html>
     <head>
-
     </head>
     <body>
         <form method="POST" action="/decrypt">
             <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
-            <label>Key : </label><input type="text" name="key" required/>
-            &nbsp;&nbsp;
-            <label>Keysize : </label><input type="number" name="keysize" required/>
-            <br><br>
-            <select name="ciphermethod" class="hiding">
-                <option>Hill cipher</option>
+            <select name="ciphermethod">
+                <option>Caeser cipher</option>
             </select>
-            <button>decrypt</button>
+            <button>Decrypt</button>
         </form>
         <button id="bk">Back</button>
         <br><br>
         <div>
             {%if value %}
-            <span>The decrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
+            <span>The Decrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
             "{{value}}"
-            {% else %}
             {% endif %}
         </div>
         <script>

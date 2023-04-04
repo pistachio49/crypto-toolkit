@@ -1,17 +1,12 @@
 <html>
     <head>
-
     </head>
     <body>
         <form method="POST" action="/encrypt">
             <label>Plain text : </label><input type="text" name="value" required/>
             <br><br>
-            <label>Key : </label><input type="text" name="key" required/>
-            &nbsp;&nbsp;
-            <label>Keysize : </label><input type="number" name="keysize" required/>
-            <br><br>
-            <select name="ciphermethod" class="hiding">
-                <option>Hill cipher</option>
+            <select name="ciphermethod">
+                <option>Caeser cipher</option>
             </select>
             <button>Encrypt</button>
         </form>
@@ -21,7 +16,6 @@
             {%if value %}
             <span>The Encrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
             "{{value}}"
-            {% else %}
             {% endif %}
         </div>
         <script>

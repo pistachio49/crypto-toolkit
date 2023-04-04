@@ -5,7 +5,7 @@
         <form method="POST" action="/decrypt">
             <div>Rail Fence Cipher</div>
             <br><br>
-            <label>Cipher text : </label><input type="text" name="value"/>
+            <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>Rail fence cipher</option>
@@ -16,9 +16,9 @@
         <form method="POST" action="/decrypt">
             <div>Keyless transposition cipher with fixed number of columns</div>
             <br><br>
-            <label>Cipher text : </label><input type="text" name="value"/>
+            <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
-            <label>Number of Columns : </label><input type="number" name="key"/>
+            <label>Number of Columns : </label><input type="number" name="key" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>keyless transposition cipher with fixed number of columns</option>
@@ -29,9 +29,9 @@
         <form method="POST" action="/decrypt">
             <div>Permutation transposition cipher</div>
             <br><br>
-            <label>Cipher text : </label><input type="text" name="value"/>
+            <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
-            <label>Key : </label><input type="text" name="key"/>
+            <label>Key : </label><input type="text" name="key" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>Permutation transposition cipher</option>
@@ -42,9 +42,9 @@
         <form method="POST" action="/decrypt">
             <div>Combined approach(key+keyless)</div>
             <br><br>
-            <label>Cipher text : </label><input type="text" name="value"/>
+            <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
-            <label>Key : </label><input type="text" name="key"/>
+            <label>Key : </label><input type="text" name="key" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>Combined approach(key+keyless)</option>

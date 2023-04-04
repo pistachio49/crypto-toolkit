@@ -3,11 +3,11 @@
     </head>
     <body>
         <form method="POST" action="/crypt">
-            <label>Cipher text : </label><input type="text" name="value"/>
+            <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
-            <label>Plain text : </label><input type="text" name="key"/>
+            <label>Plain text : </label><input type="text" name="key" required/>
             &nbsp;&nbsp;
-            <label>Keysize : </label><input type="number" name="keysize"/>
+            <label>Keysize : </label><input type="number" name="keysize" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>Hill cipher</option>

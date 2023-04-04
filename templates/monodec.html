@@ -3,9 +3,9 @@
     </head>
     <body>
         <form method="POST" action="/decrypt">
-            <label>Cipher text : </label><input type="text" name="value"/>
+            <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
-            <label>Key : </label><input type="text" name="key"/>
+            <label>Key : </label><input type="text" name="key" required/>
             <br><br>
             <select name="ciphermethod" class="hiding" style="display:none;">
                 <option>Monoalphabetic Substitution cipher</option>

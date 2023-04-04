@@ -11,11 +11,11 @@
 
 .key
 {
-    height:100px;
+    height:75px;
     min-width:200px;
     background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
     text-align:center;
-    line-height:100px;
+    line-height:75px;
     cursor:pointer;
     border:2px solid black;
     padding-left:4px;

@@ -4,11 +4,11 @@
     </head>
     <body>
         <form method="POST" action="/decrypt">
-            <label>Cipher text : </label><input type="text" name="value"/>
+            <label>Cipher text : </label><input type="text" name="value" id="Ciphertext" required/>
             <br><br>
-            <label>Key1 : </label><input type="number" name="key"/>
+            <label>Key1 : </label><input type="number" name="key" required/>
             &nbsp;&nbsp;
-            <label>Key2 : </label><input type="number" name="key2"/>
+            <label>Key2 : </label><input type="number" name="key2" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>Affine cipher</option>

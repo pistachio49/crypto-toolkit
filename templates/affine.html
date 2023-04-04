@@ -1,14 +1,13 @@
 <html>
     <head>
-
     </head>
     <body>
-        <form method="POST" action="/encrypt">
-            <label>Plain text : </label><input type="text" name="value"/>
+        <form method="POST" action="/encrypt" id="form1">
+            <label>Plain text : </label><input type="text" name="value" id="Plaintext" required/>
             <br><br>
-            <label>Key1 : </label><input type="number" name="key"/>
+            <label>Key1 : </label><input type="number" name="key" required/>
             &nbsp;&nbsp;
-            <label>Key2 : </label><input type="number" name="key2"/>
+            <label>Key2 : </label><input type="number" name="key2" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>Affine cipher</option>
@@ -27,9 +26,9 @@
         </div>
         <script>
             let u1=document.getElementById('bk')
-            u1.addEventListener('click',()=>{
+                u1.addEventListener('click',()=>{
                 window.location.href="http://127.0.0.1:5000/encrypttext"
-            })
+                })
         </script>
     </body>
 </html>

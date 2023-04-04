@@ -13,7 +13,10 @@
             Hill cipher
         </div>
         <div class="key" id="shift">
-            Shift cipher/Caeser cipher
+            Shift cipher
+        </div>
+        <div class="key" id="caeser">
+            Caeser cipher
         </div>
         <div class="key" id="vig">
            Vigenere cipher
@@ -63,6 +66,11 @@
             ob6.addEventListener('click',()=>
             {
                 window.location.href="http://127.0.0.1:5000/monodec"
+            })
+            let ob7=document.getElementById("caeser")
+            ob7.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/caeserdec"
             })
         </script>
     </body>

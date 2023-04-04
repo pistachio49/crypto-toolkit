@@ -1,16 +1,14 @@
 <html>
     <head>
-
     </head>
     <body>
         <form method="POST" action="/encrypt">
-            <label>Plain text : </label><input type="text" name="value"/>
+            <label>Plain text : </label><input type="text" name="value" required/>
             <br><br>
-            <label>Key : </label><input type="text" name="key"/>
+            <label>Key : </label><input type="text" name="key" required/>
             <br><br>
             <select name="ciphermethod">
                 <option>Vigenere cipher</option>
-                <option>Monoalphabetic Substitution cipher</option>
             </select>
             <button>Encrypt</button>
         </form>

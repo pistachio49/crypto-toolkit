@@ -9,6 +9,7 @@ python3 app.py to run the server
 
 Everytime if numerical appear in plain/cipher text error message popup
 Everytime if a blank column is present error message popup
+
 Message box: 
 AFFINE:
 	ENCRYPTION:
@@ -30,14 +31,14 @@ HILL:
 	ENCRYPTION:
 	key size = size of key matrix
 	key = alphabetic characters only with length key size*2
-	plain text = alphabets 
+	plain text = alphabets 							//update on python side
 	boguz characters will be added (eg: z, yz, xyz, wxyz) as required
 	
 	DECRYPTION:
 	ciphertext must be a multiple of the key matrix size
 	key size = size of key matrix
 	key = alphabetic characters only with length key size*2, key should be necessarily invertible. if non invertible matrix added then show error message.
-	cipher text = alphabets 
+	cipher text = alphabets     //update on python side
 	boguz characters will be added (eg: z, yz, xyz, wxyz) as required
 	
 	CRYPTANALYSIS:

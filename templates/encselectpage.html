@@ -13,11 +13,17 @@
             Hill cipher
         </div>
         <div class="key" id="shift">
-            Shift cipher / Caeser cipher
+            Shift cipher
+        </div>
+        <div class="key" id="caeser">
+            Caeser cipher
         </div>
         <div class="key" id="vig">
-           Monoalphabetic Substitution cipher / Vigenere cipher
+           Vigenere cipher
         </div>
+        <div class="key" id="monoenc">
+            Monoalphabetic Substitution cipher
+         </div>
         <div class="key" id="tr">
             Transposition cipher
         </div>
@@ -55,6 +61,16 @@
             ob5.addEventListener('click',()=>
             {
                 window.location.href="http://127.0.0.1:5000/"
+            })
+            let ob7=document.getElementById("caeser")
+            ob7.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/caeserenc"
+            })
+            let ob8=document.getElementById("monoenc")
+            ob8.addEventListener('click',()=>
+            {
+                window.location.href="http://127.0.0.1:5000/monoenc"
             })
         </script>
     </body>

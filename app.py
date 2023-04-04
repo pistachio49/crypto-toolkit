@@ -461,6 +461,15 @@ def combinedapproachcipherdec(value,key1):
 def homepage():
     return render_template("homepage.html")
 
+@app.route("/caeserenc")
+def caeserenc():
+    return render_template("caeserenc.html")
+
+@app.route("/caeserdec")
+def caeserdec():
+    return render_template("caeserdec.html")
+
+
 @app.route("/hill")
 def hill():
     return render_template("hill.html")
@@ -504,6 +513,10 @@ def vigdec():
 @app.route("/monodec")
 def monodec():
     return render_template("monodec.html")
+
+@app.route("/monoenc")
+def monoenc():
+    return render_template("monoenc.html")
 
 @app.route("/hilldec")
 def hilldec():
@@ -555,13 +568,13 @@ def encrypt():
         a=1
     elif(ciphermethod=="Caeser cipher"):
         d1=shiftcipher(value,3)
-        a=1
-    elif(ciphermethod=="Vignere cipher"):
+        a=10
+    elif(ciphermethod=="Vigenere cipher"):
         d1=vignerecipher(value,key)
         a=2
     elif(ciphermethod=="Monoalphabetic Substitution cipher"):
         d1=simplecipher(value,key)
-        a=2
+        a=12
     elif(ciphermethod=="Affine cipher"):
         d1=affinecipher(value,key,key2)
         if(d1=="invalid"):
@@ -592,6 +605,10 @@ def encrypt():
         return render_template("vignere.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
     elif(a==3):
         return render_template("hill.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+    elif(a==10):
+        return render_template("caeserenc.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+    elif(a==12):
+        return render_template("monoenc.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
     elif(a==4):
         return render_template("transposition.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
 
@@ -613,8 +630,8 @@ def decrypt():
         a=1
     elif(ciphermethod=="Caeser cipher"):
         d1=shiftcipherdec(value,3)
-        a=1
-    elif(ciphermethod=="Vignere cipher"):
+        a=10
+    elif(ciphermethod=="Vigenere cipher"):
         d1=vigdecryption(value,key)
         a=2
     elif(ciphermethod=="Monoalphabetic Substitution cipher"):
@@ -651,6 +668,8 @@ def decrypt():
         return render_template("monodec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod) 
     elif(a==4):
         return render_template("hilldec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
+    elif(a==10):
+        return render_template("caeserenc.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
     elif(a==5):
         return render_template("transpositiondec.html",value=d1,inputvalue=value,ciphermethod=ciphermethod)
 
@@ -686,7 +705,7 @@ def crypt():
             return render_template("hillcrypt.html",key=d1)
         else:
             return render_template("hillcrypt.html",err=True)
-    elif(ciphermethod=="Vignere cipher"):
+    elif(ciphermethod=="Vigenere cipher"):
         d1=vigcrypt1(value)
         if(d1!="invalid!"):
             return render_template("vigcrypt.html",key=d1[0],ptext=d1[1])

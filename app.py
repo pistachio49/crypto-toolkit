@@ -810,9 +810,13 @@ def crypt():
     a=0
     d1=""
     if(ciphermethod=="Monoalphabetic Substitution cipher"):
+        if(value.isalpha()==False):
+            return render_template("monocrypt.html",err="Cipher text must only consist of alphabets")
+        if(key.isalpha()==False):
+            return render_template("monocrypt.html",err="Plain text must only consist of alphabets")
         d1=monocrypt1(value,key)
         if(d1=="invalid!"):
-            return render_template("monocrypt.html")
+            return render_template("monocrypt.html",err="Enter a valid input")
         else:
             return render_template("monocrypt.html",value=d1,inputvalue=value,ciphermethod=ciphermethod) 
     elif(ciphermethod=="Shift cipher"):
@@ -829,17 +833,21 @@ def crypt():
         else:
             return render_template("affinecrypt.html",err="valid word is not present in the used wordlist")
     elif(ciphermethod=="Hill cipher"):
+        if(value.isalpha()==False):
+            return render_template("vigcrypt.html",err="Cipher text must only consist of alphabets")
         d1=hillcrypt1(value,key,keysize)
         if(d1!="invalid!"):
             return render_template("hillcrypt.html",key=d1)
         else:
-            return render_template("hillcrypt.html",err=True)
+            return render_template("hillcrypt.html",err="valid word is not present in the used wordlist")
     elif(ciphermethod=="Vigenere cipher"):
+        if(value.isalpha()==False):
+            return render_template("vigcrypt.html",err="Cipher text must only consist of alphabets")
         d1=vigcrypt1(value)
         if(d1!="invalid!"):
             return render_template("vigcrypt.html",key=d1[0],ptext=d1[1])
         else:
-            return render_template("vigcrypt.html",err=True)
+            return render_template("vigcrypt.html",err="valid word is not present in the used wordlist")
     
 if __name__=='__main__':
     app.run(debug=True,port=5000)

@@ -18,8 +18,8 @@
             {%if value %}
             <span>The Key is : </span>
             {{value}}
-            {% else %}
-            <span>Enter a valid input</span>
+            {% elif err %}
+            <span>{{err}}</span>
             {% endif %}
         </div>
         <script>

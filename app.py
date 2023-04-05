@@ -639,17 +639,17 @@ def encrypt():
         a=3
     elif(ciphermethod=="Rail fence cipher"):
         if(value.isalpha()==False):
-            return render_template("transposition.html",err="The Cipher Text must consist only of alphabets without spaces")
+            return render_template("transposition.html",err="The Plain Text must consist only of alphabets without spaces")
         d1=railfencecipher(value)
         a=4
     elif(ciphermethod=="keyless transposition cipher with fixed number of columns"):
         if(value.isalpha()==False):
-            return render_template("transposition.html",err="The Cipher Text must consist only of alphabets without spaces")
+            return render_template("transposition.html",err="The Plain Text must consist only of alphabets without spaces")
         d1=keylesscipher(value,key)
         a=4
     elif(ciphermethod=="Permutation transposition cipher"):
         if(value.isalpha()==False):
-            return render_template("transposition.html",err="The Cipher Text must consist only of alphabets without spaces")
+            return render_template("transposition.html",err="The Plain Text must consist only of alphabets without spaces")
         if(transpositionvalid(key,False,value)!="valid!"):
             p=transpositionvalid(key,False,value)
             return render_template("transposition.html",err=p)
@@ -664,7 +664,7 @@ def encrypt():
         a=4
     elif(ciphermethod=="Combined approach(key+keyless)"):
         if(value.isalpha()==False):
-            return render_template("transposition.html",err="The Cipher Text must consist only of alphabets without spaces")
+            return render_template("transposition.html",err="The Plain Text must consist only of alphabets without spaces")
         if(transpositionvalid(key,False,value)!="valid!"):
             p=transpositionvalid(key,False,value)
             return render_template("transposition.html",err=p)

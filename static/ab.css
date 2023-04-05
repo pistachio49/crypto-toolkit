@@ -7,6 +7,7 @@
     align-items:center;
     justify-content:center;
     gap:30px;
+    margin-top:
 }
 
 body
@@ -21,7 +22,7 @@ body
 .key
 {
     height:75px;
-    min-width:300px;
+    min-width:440px;
     /* background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%); */
     text-align:center;
     line-height:75px;
@@ -45,7 +46,7 @@ body
     align-items:center;
     justify-content:center;
     width:100vw;
-    margin-bottom:2vh;
+    margin-bottom:5vh;
     border:2px solid black;
     background:white;
 }

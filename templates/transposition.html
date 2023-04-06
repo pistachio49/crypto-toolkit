@@ -1,10 +1,22 @@
 <html>
     <head>
-
+        <link rel="stylesheet" href="{{url_for('static',filename='enc.css')}}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     </head>
     <body>
-        <form method="POST" action="/encrypt">
-            <div>Rail Fence Cipher</div>
+        <div class="headingmethod">
+            <div class="heading1">
+                Transposition Cipher Encryption
+            </div>
+            </div>
+        <form method="POST" action="/encrypt" class="trform">
+            <div class="heading2">Rail Fence Cipher</div>
+            <div class="instr1">
+                <div>Instructions</div>
+                <div>Plain Text should consist of only alphabets without spaces</div>
+            </div>
             <br><br>
             <label>Plain text : </label><input type="text" name="value" required/>
             <br><br>
@@ -14,8 +26,12 @@
             <button>Encrypt</button>
         </form>
         <br><br>
-        <form method="POST" action="/encrypt">
-            <div>Keyless transposition cipher with fixed number of columns</div>
+        <form method="POST" action="/encrypt" class="trform">
+            <div class="heading2">Keyless transposition cipher with fixed number of columns</div>
+            <div class="instr1">
+                <div>Instructions</div>
+                <div>Plain Text should consist of only alphabets without spaces</div>
+            </div>
             <br><br>
             <label>Plain text : </label><input type="text" name="value" required/>
             <br><br>
@@ -27,8 +43,14 @@
             <button>Encrypt</button>
         </form>
         <br><br>
-        <form method="POST" action="/encrypt">
-            <div>Permutation transposition cipher</div>
+        <form method="POST" action="/encrypt" class="trform">
+            <div class="heading2">Permutation transposition cipher</div>
+            <div class="instr1">
+                <div>Instructions</div>
+                <div>Plain Text should consist of only alphabets without spaces</div>
+                <div>The Key should be space separated numericals and they should be in the format 
+                     (1 2 3 4 ..)</div>
+            </div>
             <br><br>
             <label>Plain text : </label><input type="text" name="value" required/>
             <br><br>
@@ -40,8 +62,14 @@
             <button>Encrypt</button>
         </form>
         <br><br>
-        <form method="POST" action="/encrypt">
-            <div>Combined approach(key+keyless)</div>
+        <form method="POST" action="/encrypt" class="trform">
+            <div class="heading2">Combined approach(key+keyless)</div>
+            <div class="instr1">
+                <div>Instructions</div>
+                <div>Plain Text should consist of only alphabets without spaces</div>
+                <div>The Key should be space separated numericals and they should be in the format 
+                    (1 2 3 4 ..)</div>
+            </div>
             <br><br>
             <label>Plain text : </label><input type="text" name="value" required/>
             <br><br>
@@ -52,7 +80,7 @@
             </select>
             <button>Encrypt</button>
         </form>
-        <button id="bk">Back</button>
+        <button id="bk" style="font-size:1.5rem;margin-left:4px;">Back</button>
         <br><br>
         <div>
             {%if value %}

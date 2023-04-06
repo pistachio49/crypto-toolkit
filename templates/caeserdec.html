@@ -1,16 +1,36 @@
 <html>
     <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='enc.css')}}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     </head>
     <body>
+        <div class="headingmethod">
+            <div class="heading1">
+                Caeser Cipher Decryption
+            </div>
+            </div>
+            <div class="instr">
+            <div>
+            Instructions : 
+            </div>
+            <div>Cipher text must consist only of alphabets .</div>
+            <div>key must consist only of numericals. </div>
+            </div>
+            </div>
+            <div class="formcontainer">
+            <div class="formouter">
         <form method="POST" action="/decrypt">
             <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
-            <select name="ciphermethod">
+            <select name="ciphermethod" class="hiding">
                 <option>Caeser cipher</option>
             </select>
             <button>Decrypt</button>
+            <button id="bk">Back</button>
         </form>
-        <button id="bk">Back</button>
+    </div>
         <br><br>
         <div>
             {%if value %}
@@ -19,6 +39,7 @@
             {% elif err %}
             <span>{{err}}</span>
             {% endif %}
+        </div>
         </div>
         <script>
             let u1=document.getElementById('bk')

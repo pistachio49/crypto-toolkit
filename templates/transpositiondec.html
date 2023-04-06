@@ -1,21 +1,37 @@
 <html>
     <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='enc.css')}}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     </head>
-    <body>
-        <form method="POST" action="/decrypt">
-            <div>Rail Fence Cipher</div>
+    <body><div class="headingmethod">
+        <div class="heading1">
+            Transposition Cipher Decryption
+        </div>
+        </div>
+        <form method="POST" action="/decrypt" class="trform" style="margin-top:20px;">
+            <div class="heading2">Rail Fence Cipher</div>
+            <div class="instr1">
+                <div>Instructions</div>
+                <div>Cipher Text should consist of only alphabets without spaces</div>
+            </div>
             <br><br>
             <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>Rail fence cipher</option>
             </select>
-            <button>decrypt</button>
+            <button>Decrypt</button>
         </form>
         <br><br>
-        <form method="POST" action="/decrypt">
-            <div>Keyless transposition cipher with fixed number of columns</div>
+        <form method="POST" action="/decrypt" class="trform">
+            <div class="heading2">Keyless transposition cipher with fixed number of columns</div>
             <br><br>
+            <div class="instr1" style="margin-top:-25px;margin-bottom:20px;">
+                <div>Instructions</div>
+                <div>Cipher Text should consist of only alphabets without spaces</div>
+            </div>
             <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
             <label>Number of Columns : </label><input type="number" name="key" required/>
@@ -23,12 +39,19 @@
             <select name="ciphermethod" class="hiding">
                 <option>keyless transposition cipher with fixed number of columns</option>
             </select>
-            <button>decrypt</button>
+            <button>Decrypt</button>
         </form>
         <br><br>
-        <form method="POST" action="/decrypt">
-            <div>Permutation transposition cipher</div>
+        <form method="POST" action="/decrypt" class="trform">
+            <div class="heading2">Permutation transposition cipher</div>
             <br><br>
+            <div class="instr1" style="margin-top:-25px;margin-bottom:20px;">
+                <div>Instructions</div>
+                <div>Cipher Text should consist of only alphabets without spaces</div>
+                <div>Key size should be a multiple of cipher text size</div>
+                <div>The Key should be space separated numericals and they should be in the format 
+                    (1 2 3 4 ..)</div>
+            </div>
             <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
             <label>Key : </label><input type="text" name="key" required/>
@@ -36,12 +59,19 @@
             <select name="ciphermethod" class="hiding">
                 <option>Permutation transposition cipher</option>
             </select>
-            <button>decrypt</button>
+            <button>Decrypt</button>
         </form>
         <br><br>
-        <form method="POST" action="/decrypt">
-            <div>Combined approach(key+keyless)</div>
+        <form method="POST" action="/decrypt" class="trform">
+            <div class="heading2">Combined approach(key+keyless)</div>
             <br><br>
+            <div class="instr1" style="margin-top:-25px;margin-bottom:20px;">
+                <div>Instructions</div>
+                <div>Cipher Text should consist of only alphabets without spaces</div>
+                <div>Key size should be a multiple of cipher text size</div>
+                <div>The Key should be space separated numericals and they should be in the format 
+                    (1 2 3 4 ..)</div>
+            </div>
             <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
             <label>Key : </label><input type="text" name="key" required/>
@@ -49,9 +79,9 @@
             <select name="ciphermethod" class="hiding">
                 <option>Combined approach(key+keyless)</option>
             </select>
-            <button>decrypt</button>
+            <button>Decrypt</button>
         </form>
-        <button id="bk">Back</button>
+        <button id="bk" style="font-size:1.5rem;margin-left:4px;">Back</button>
         <br><br>
         <div>
             {%if value %}

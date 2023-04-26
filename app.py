@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request
 from sympy import Matrix,Transpose
+from flask_bootstrap import Bootstrap
 import numpy as np
 from math import ceil
 from numpy import array
@@ -8,6 +9,8 @@ from vigcryptanalysis import *
 from validations import *
 
 app=Flask(__name__)
+bootstrap = Bootstrap(app)
+
 def GCD(x,y):
     while y:
         (x, y) = (y,x%y)
@@ -496,7 +499,7 @@ def combinedapproachcipherdec(value,key1):
 @app.route("/")
 @app.route("/homepage")
 def homepage():
-    return render_template("homepage.html")
+    return render_template("sample2.html")
 
 @app.route("/caeserenc")
 def caeserenc():

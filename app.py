@@ -499,7 +499,7 @@ def combinedapproachcipherdec(value,key1):
 @app.route("/")
 @app.route("/homepage")
 def homepage():
-    return render_template("sample2.html")
+    return render_template("homepage.html")
 
 @app.route("/caeserenc")
 def caeserenc():

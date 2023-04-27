@@ -1,67 +1,81 @@
 {% extends 'base.html' %}
     {% block content %}
-    <div class="row">
-        <div class="col-md-4">
+    <style>
+        /* .box-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px; 
+        } */
+        .box {
+            /* background-color: #ccc; */
+            padding: 10px;
+            margin-bottom: 5px; /* Add margin between the boxes */
+        }
+    </style>
+
+    <div class="row box-container">
+        <div class="col-md-4 box">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Cipher 1</h5>
-              <p class="card-text">Description of Cipher 1</p>
-              <a href="#" class="btn btn-primary">Select Cipher 1</a>
+              <h5 class="card-title">Affine cipher</h5>
+              <p class="card-text">affine cipher</p>
+              <a href="/affine" class="btn btn-outline-secondary">Select</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 box">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Cipher 2</h5>
+              <h5 class="card-title">Hill Cipher</h5>
               <p class="card-text">Description of Cipher 2</p>
-              <a href="#" class="btn btn-primary">Select Cipher 2</a>
+              <a href="/hill" class="btn btn-outline-secondary">Select</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 box">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Cipher 3</h5>
+              <h5 class="card-title">Shift Cipher</h5>
               <p class="card-text">Description of Cipher 3</p>
-              <a href="#" class="btn btn-primary">Select Cipher 3</a>
+              <a href="/shift" class="btn btn-outline-secondary">Select</a>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 box">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Cipher 1</h5>
+                <h5 class="card-title">Caeser Cipher</h5>
                 <p class="card-text">Description of Cipher 1</p>
-                <a href="#" class="btn btn-primary">Select Cipher 1</a>
+                <a href="/caeserenc" class="btn btn-outline-secondary">Select</a>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 box">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Cipher 2</h5>
+                <h5 class="card-title">Vigenere Cipher</h5>
                 <p class="card-text">Description of Cipher 2</p>
-                <a href="#" class="btn btn-primary">Select Cipher 2</a>
+                <a href="/vig" class="btn btn-outline-secondary">Select</a>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 box">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Cipher 3</h5>
+                <h5 class="card-title">Monoalphabetic Substitution Cipher</h5>
                 <p class="card-text">Description of Cipher 3</p>
-                <a href="#" class="btn btn-primary">Select Cipher 3</a>
+                <a href="/monoenc" class="btn btn-outline-secondary">Select</a>
               </div>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 box">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Cipher 3</h5>
+                <h5 class="card-title">Transposition Cipher</h5>
                 <p class="card-text">Description of Cipher 3</p>
-                <a href="#" class="btn btn-primary">Select Cipher 3</a>
+                <a href="/transposition" class="btn btn-outline-secondary">Select</a>
               </div>
             </div>
           </div>

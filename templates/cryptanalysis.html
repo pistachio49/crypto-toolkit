@@ -1,74 +1,85 @@
-<html>
-    <head>
-        <title>Cryptanalysis</title>
-        <link rel="stylesheet" href="{{url_for('static',filename='ab.css')}}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="heading">
-        <div class="heading1">Cryptanalysis</div>
+{% extends 'base.html' %}
+    {% block content %}
+    <style>
+        /* .box-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 300px; 
+        } */
+        .box {
+            /* background-color: #ccc; */
+            padding: 10px;
+            margin-bottom: 5px; /* Add margin between the boxes */
+        }
+    </style>
+
+    <div class="row box-container">
+        <div class="col-md-4 box">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Affine cipher</h5>
+              <p class="card-text">affine cipher</p>
+              <a href="/affinecrypt" class="btn btn-outline-secondary">Select</a>
+            </div>
+          </div>
         </div>
-        <div class="container">
-        <div class="key" id="affine">
-            Affine cipher
+        <div class="col-md-4 box">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Hill Cipher</h5>
+              <p class="card-text">Description of Cipher 2</p>
+              <a href="/hillcrypt" class="btn btn-outline-secondary">Select</a>
+            </div>
+          </div>
         </div>
-        <div class="key" id="hill">
-            Hill cipher
+        <div class="col-md-4 box">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Shift/Caeser Cipher</h5>
+              <p class="card-text">Description of Cipher 3</p>
+              <a href="/shiftcrypt" class="btn btn-outline-secondary">Select</a>
+            </div>
+          </div>
         </div>
-        <div class="key" id="shift">
-            Shift cipher/Caeser cipher
-        </div>
-        <div class="key" id="vig">
-           Vignere cipher
-        </div>
-        <div class="key" id="mono">
-            Monoalphabetic Substitution Cipher
-         </div>
-        <div class="key" id="tr">
-            Transposition cipher
-        </div>
-        <div class="key" id="hm">
-            Home Page
-        </div>
-        </div>
-        <script>
-            let ob=document.getElementById("affine")
-            ob.addEventListener('click',()=>
-            {
-                window.location.href="http://127.0.0.1:5000/affinecrypt"
-            })
-            let ob1=document.getElementById("hill")
-            ob1.addEventListener('click',()=>
-            {
-                window.location.href="http://127.0.0.1:5000/hillcrypt"
-            })
-            let ob2=document.getElementById("shift")
-            ob2.addEventListener('click',()=>
-            {
-                window.location.href="http://127.0.0.1:5000/shiftcrypt"
-            })
-            let ob3=document.getElementById("vig")
-            ob3.addEventListener('click',()=>
-            {
-                window.location.href="http://127.0.0.1:5000/vigcrypt"
-            })
-            let ob4=document.getElementById("tr")
-            ob4.addEventListener('click',()=>
-            {
-                window.location.href="http://127.0.0.1:5000/transpositioncrypt"
-            })
-            let ob5=document.getElementById("hm")
-            ob5.addEventListener('click',()=>
-            {
-                window.location.href="http://127.0.0.1:5000/"
-            })
-            let ob6=document.getElementById("mono")
-            ob6.addEventListener('click',()=>
-            {
-                window.location.href="http://127.0.0.1:5000/monocrypt"
-            })
-        </script>
-    </body>
-</html>
+
+        <!-- <div class="col-md-4 box">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Caeser Cipher</h5>
+                <p class="card-text">Description of Cipher 1</p>
+                <a href="/caeserenc" class="btn btn-outline-secondary">Select</a>
+              </div>
+            </div>
+          </div> -->
+          <div class="col-md-4 box">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Vigenere Cipher</h5>
+                <p class="card-text">Description of Cipher 2</p>
+                <a href="/vigcrypt" class="btn btn-outline-secondary">Select</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 box">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Monoalphabetic Substitution Cipher</h5>
+                <p class="card-text">Description of Cipher 3</p>
+                <a href="/monocrypt" class="btn btn-outline-secondary">Select</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 box">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Transposition Cipher</h5>
+                <p class="card-text">Description of Cipher 3</p>
+                <a href="/transpositioncrypt" class="btn btn-outline-secondary">Select</a>
+              </div>
+            </div>
+          </div>
+      </div>
+          
+	
+    {% endblock %}

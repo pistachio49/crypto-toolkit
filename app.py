@@ -828,7 +828,7 @@ def crypt():
         d1=shiftcrypt1(value)
         return render_template("shiftcrypt.html",value=d1[0],key=d1[1]) 
     elif(ciphermethod=="Affine cipher"):
-        if(value.isalpha()==False):
+        if(value.replace(" ","").isalpha()==False):
             return render_template("affinecrypt.html",err="The Cipher Text must consist only of alphabets")
         d1=affinecrypt1(value)
         if(d1!="invalid!"):

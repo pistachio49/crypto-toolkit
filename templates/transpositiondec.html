@@ -1,101 +1,166 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="{{url_for('static',filename='enc.css')}}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
-    </head>
-    <body><div class="headingmethod">
-        <div class="heading1">
-            Transposition Cipher Decryption
-        </div>
-        </div>
+{% extends 'base.html' %}
+{% block logo %}
+    - Transposition Cipher
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .container{
+    text-align: justify;
+  }
+
+  .form-group, .btn{
+    margin-top: 0.3em;
+  }
+
+  .hiding{
+    display:none;
+  }
+
+  form{
+    border: 1px solid #000;
+    padding: 10px;
+  }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
         <form method="POST" action="/decrypt" class="trform" style="margin-top:20px;">
-            <div class="heading2">Rail Fence Cipher</div>
-            <div class="instr1">
-                <div>Instructions</div>
-                <div>Cipher Text should consist of only alphabets without spaces</div>
+            <h4>Rail Fence Cipher</h4>
+                    <div class="instr1">
+                        <h5>Instructions</h5>
+                        <div>Cipher Text should consist of only alphabets without spaces</div>
+                    </div>
+                    <br><br>
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <input type="text" name="value" id="Ciphertext" style="width: 300px;" class="form-control" placeholder="Enter ciphertext" required>
             </div>
-            <br><br>
-            <label>Cipher text : </label><input type="text" name="value" required/>
-            <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>Rail fence cipher</option>
             </select>
-            <button>Decrypt</button>
+            <button type="submit" class="btn btn-primary">Decrypt</button>
         </form>
-        <br><br>
+<br><br>
+</div>
+</div>
+
+<div class="row">
+    <div class="col">
         <form method="POST" action="/decrypt" class="trform">
-            <div class="heading2">Keyless transposition cipher with fixed number of columns</div>
-            <br><br>
-            <div class="instr1" style="margin-top:-25px;margin-bottom:20px;">
-                <div>Instructions</div>
-                <div>Cipher Text should consist of only alphabets without spaces</div>
+            <h4>Keyless transposition cipher with fixed number of columns</h4>
+            <div class="instr1">
+                <h5>Instructions</h5>
+                <div>Plain Text should consist of only alphabets without spaces</div>
             </div>
-            <label>Cipher text : </label><input type="text" name="value" required/>
             <br><br>
-            <label>Number of Columns : </label><input type="number" name="key" required/>
-            <br><br>
+
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <input type="text" name="value" id="Ciphertext" style="width: 300px;" class="form-control" placeholder="Enter ciphertext" required>
+            </div>
+
+            <div class="form-group">
+                <label for="number">key:</label>
+                <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key" required>
+              </div>
             <select name="ciphermethod" class="hiding">
                 <option>keyless transposition cipher with fixed number of columns</option>
             </select>
-            <button>Decrypt</button>
+            <button type="submit" class="btn btn-primary">Decrypt</button>
+
         </form>
         <br><br>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
         <form method="POST" action="/decrypt" class="trform">
-            <div class="heading2">Permutation transposition cipher</div>
-            <br><br>
-            <div class="instr1" style="margin-top:-25px;margin-bottom:20px;">
-                <div>Instructions</div>
+            <h4>Permutation transposition cipher</h4>
+            <div class="instr1">
+                <h5>Instructions</h5>
                 <div>Cipher Text should consist of only alphabets without spaces</div>
                 <div>Key size should be a multiple of cipher text size</div>
                 <div>The Key should be space separated numericals and they should be in the format 
                     (1 2 3 4 ..)</div>
+                </div>
+                <br><br>
+
+
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <input type="text" name="value" id="Ciphertext" style="width: 300px;" class="form-control" placeholder="Enter ciphertext" required>
             </div>
-            <label>Cipher text : </label><input type="text" name="value" required/>
-            <br><br>
-            <label>Key : </label><input type="text" name="key" required/>
-            <br><br>
+
+            <div class="form-group">
+            <label for="number">key:</label>
+            <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key" required>
+            </div>   
+
+
             <select name="ciphermethod" class="hiding">
                 <option>Permutation transposition cipher</option>
             </select>
-            <button>Decrypt</button>
+            <button type="submit" class="btn btn-primary">Decrypt</button>
+
         </form>
         <br><br>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
         <form method="POST" action="/decrypt" class="trform">
-            <div class="heading2">Combined approach(key+keyless)</div>
-            <br><br>
-            <div class="instr1" style="margin-top:-25px;margin-bottom:20px;">
-                <div>Instructions</div>
+            <h4>Combined approach(key+keyless)</h4>
+            <div class="instr1">
+                <h5>Instructions</h5>
                 <div>Cipher Text should consist of only alphabets without spaces</div>
                 <div>Key size should be a multiple of cipher text size</div>
                 <div>The Key should be space separated numericals and they should be in the format 
                     (1 2 3 4 ..)</div>
+                </div>
+                <br><br>
+
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <input type="text" name="value" id="Ciphertext" style="width: 300px;" class="form-control" placeholder="Enter ciphertext" required>
             </div>
-            <label>Cipher text : </label><input type="text" name="value" required/>
-            <br><br>
-            <label>Key : </label><input type="text" name="key" required/>
-            <br><br>
+
+            <div class="form-group">
+          <label for="number">key:</label>
+          <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key" required>
+        </div>
             <select name="ciphermethod" class="hiding">
                 <option>Combined approach(key+keyless)</option>
             </select>
-            <button>Decrypt</button>
+            <button type="submit" class="btn btn-primary">Decrypt</button>
+  
         </form>
-        <button id="bk" style="font-size:1.5rem;margin-left:4px;">Back</button>
+        <!-- <button id="bk" style="font-size:1.5rem;margin-left:4px;">Back</button> -->
         <br><br>
-        <div>
-            {%if value %}
-            <span>The decrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
-            {{value}}
-            {% elif err %}
-            <span>{{err}}</span>
-            {% endif %}
-        </div>
-        <script>
-            let u1=document.getElementById('bk')
-            u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/decrypttext"
-            })
-        </script>
-    </body>
-</html>
+
+    </div>
+</div>
+</div>
+<br><br>
+{%if value %}
+    <div class="row">
+      <div class="col">
+        <h4>Encrypted text:</h4>
+        <pre><p id="output">{{value}}</p></pre>
+      </div>
+    </div>
+    {% elif err %}
+      {{err}}
+      {% endif %}
+  </div>
+  
+  
+  {% endblock %}

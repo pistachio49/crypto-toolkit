@@ -1,31 +1,28 @@
-
-    {% extends 'base.html' %}
-    {% block title %}
-        - Monoalphabetic Cipher
-    {% endblock %}
+{% extends 'base.html' %}
+{% block logo %}
+    - Monoalphabetic Cipher
+{% endblock %}
 
 {% block content %}
-    <style>
-        .my-section {
-            position: absolute;
-            top: 15%;
-            left:  10%;
-            text-align: left;
-        }
 
-        .form-section{
-            position: absolute;
-            top: 45%;
-            left:  40%;
-        }
+<style>
+  .container{
+    text-align: justify;
+  }
 
-        .hiding
-        {
-            display:none;
-        }
+  .form-group, .btn{
+    margin-top: 0.3em;
+  }
 
-    </style>
-    <div class="my-section">
+  .hiding{
+    display:none;
+  }
+</style>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col">
         <p>
         <h3>Instructions : </h3>
         
@@ -33,35 +30,43 @@
             2. Key with 26 characters should be present necessarily.
         
     </p>
-    </div> 
+</div>
+</div>
+<br><br>
 
-    <div class="form-section">
+    
+
+<div class="row">
+    <div class="col">
         <form method="POST" action="/encrypt">
-            <label>Text : &nbsp;</label><input type="text" name="value" required/>
-            <br><br>
-            <label>Key : &nbsp;</label><input type="text" name="key" required/>
-            <br><br>
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <input type="text" name="value" id="Plaintext" style="width: 300px;" class="form-control" placeholder="Enter plaintext" required>
+              </div>
+              <div class="form-group">
+                <label for="number">key:</label>
+                <input type="text" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key" required>
+              </div>
             <select name="ciphermethod" class="hiding">
                 <option>Monoalphabetic Substitution cipher</option>
             </select>
-            <button>Encrypt</button>
-            <button id="bk">Back</button>
+            <button type="submit" class="btn btn-primary">Encrypt</button>
         </form>
     </div>
-        <br><br>
-        <div>
-            {%if value %}
-            <span>The Encrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
-            "{{value}}"
-            {% elif err %}
-            <span>{{err}}</span>
-            {% endif %}
-        </div>
-    </div>
-        <script>
-            let u1=document.getElementById('bk')
-            u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/encrypttext"
-            })
-        </script>
-    {% endblock %}
+</div><br><br>
+
+            
+{%if value %}
+<div class="row">
+  <div class="col">
+    <h4>Encrypted text:</h4>
+    <pre><p id="output">{{value}}</p></pre>
+  </div>
+</div>
+{% elif err %}
+  {{err}}
+  {% endif %}
+</div>
+
+
+{% endblock %}

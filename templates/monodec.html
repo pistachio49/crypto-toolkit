@@ -1,53 +1,72 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="{{url_for('static',filename='enc.css')}}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="headingmethod">
-            <div class="heading1">
-                Monoalphabetic Substitution Cipher Decryption
-            </div>
-            </div>
-            <div class="instr">
-            <div>
-            Instructions : 
-            </div>
-            <div>Cipher text should be alphabetic characters.</div>
-            <div>Key with 26 characters should be present necessarily.</div> 
-            </div>
-            </div>
-        <div class="formcontainer">
-        <div class="formouter">
+{% extends 'base.html' %}
+{% block logo %}
+    - Monoalphabetic Cipher
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .container{
+    text-align: justify;
+  }
+
+  .form-group, .btn{
+    margin-top: 0.3em;
+  }
+
+  .hiding{
+    display:none;
+  }
+</style>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <p>
+        <h3>Instructions : </h3>
+        
+            1. Ciphertext should be alphabetic characters.<br>
+            2. Key with 26 characters should be present necessarily.
+        
+    </p>
+</div>
+</div>
+<br><br>
+
+    
+
+<div class="row">
+    <div class="col">
         <form method="POST" action="/decrypt">
-            <label>Cipher text : </label><input type="text" name="value" required/>
-            <br><br>
-            <label>Key : </label><input type="text" name="key" required/>
-            <br><br>
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <input type="text" name="value" id="Ciphertext" style="width: 300px;" class="form-control" placeholder="Enter ciphertext" required>
+              </div>
+              <div class="form-group">
+                <label for="text">key:</label>
+                <input type="text" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key" required>
+              </div>
             <select name="ciphermethod" class="hiding">
                 <option>Monoalphabetic Substitution cipher</option>
             </select>
-            <button>Decrypt</button>
-            <button id="bk">Back</button>
+            <button type="submit" class="btn btn-primary">Decrypt</button>
         </form>
     </div>
-        <br><br>
-        <div>
-            {%if value %}
-            <span>The Decrypted text for {{inputvalue}} using {{ciphermethod}} is : </span>
-            {{value}}
-            {% elif err %}
-            <span>{{err}}</span>
-            {% endif %}
-        </div>
-    </div>
-        <script>
-            let u1=document.getElementById('bk')
-            u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/decrypttext"
-            })
-        </script>
-    </body>
-</html>
+</div><br><br>
+
+            
+{%if value %}
+<div class="row">
+  <div class="col">
+    <h4>Decrypted text:</h4>
+    <pre><p id="output">{{value}}</p></pre>
+  </div>
+</div>
+{% elif err %}
+  {{err}}
+  {% endif %}
+</div>
+
+
+{% endblock %}

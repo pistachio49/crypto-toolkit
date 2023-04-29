@@ -1,66 +1,67 @@
-
-    {% extends 'base.html' %}
-    {% block title %}
-        - Shift Cipher
-    {% endblock %}
+{% extends 'base.html' %}
+{% block logo %}
+    - Shift Cipher
+{% endblock %}
 
 {% block content %}
-    <style>
-        .my-section {
-            position: absolute;
-            top: 15%;
-            left:  10%;
-            text-align: left;
-        }
 
-        .form-section{
-            position: absolute;
-            top: 45%;
-            left:  40%;
-        }
+<style>
+  .container{
+    text-align: justify;
+  }
 
-        .hiding
-        {
-            display:none;
-        }
+  .form-group, .btn{
+    margin-top: 0.3em;
+  }
 
-    </style>
-    <div class="my-section">
-        <p>
-        <h3>Instructions : </h3>
-        
-            1. Plain text should be alphabetic characters.<br>
-            2. key must consist only of numericals. 
-        
-    </p>
-    </div>  
-    <div class="form-section">
-        <form method="POST" action="/encrypt">
-            <label>Text : &nbsp;</label><input type="text" name="value" required/>
-            <br><br>
-            <label>Key : &nbsp;</label><input type="number" name="key" required/>
-            <br><br>
-            <select name="ciphermethod" class="hiding">
-                <option>Shift cipher</option>
-            </select>
-            <button>Encrypt</button>
-            <button id="bk">Back</button>
-        </form>
+  .hiding{
+    display:none;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Instructions:</h3>
+      <p>1. Plain text should be alphabetic characters.<br>
+        2. Key must consist only of numericals.</p>
+    </div>
+  </div>
+  <br><br>
+
+
+  <div class="row">
+    <div class="col">
+      <form method="POST" action="/encrypt" id="form1">
+        <div class="form-group">
+          <label for="text">Text:</label>
+          <input type="text" name="value" id="Plaintext" style="width: 300px;" class="form-control" placeholder="Enter plaintext" required>
         </div>
-        <br><br>
-        <div>
+        <div class="form-group">
+          <label for="number">key:</label>
+          <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key1" required>
+        </div>
+        <select name="ciphermethod" class="hiding">
+          <option>Shift cipher</option>
+      </select>
+        <button type="submit" class="btn btn-primary">Encrypt</button>
+      </form>
+    </div>
+  </div><br><br>
+
+            
             {%if value %}
-            <span>The Encrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
-            "{{value}}"
+            <div class="row">
+              <div class="col">
+                <h4>Encrypted text:</h4>
+                <pre><p id="output">{{value}}</p></pre>
+              </div>
+            </div>
             {% elif err %}
-            <span>{{err}}</span>
-            {% endif %}
-        </div>
-        </div>
-        <script>
-            let u1=document.getElementById('bk')
-            u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/encrypttext"
-            })
-        </script>
-    {% endblock %}
+              {{err}}
+              {% endif %}
+          </div>
+          
+          
+          {% endblock %}
+          

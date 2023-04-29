@@ -37,49 +37,49 @@ def kasiski(ciphertext):
     return likely_lengths
 
 
-# def decrypt_vigenere(ciphertext, keyword):
-#     plaintext = ''
-#     keyword_len = len(keyword)
-#     for i in range(len(ciphertext)):
-#         shift = ord(keyword[i % keyword_len]) - 65
-#         cipher_char = ciphertext[i]
-#         if cipher_char.isalpha():
-#             plaintext += chr((ord(cipher_char) - shift - 65) % 26 + 65)
-#         else:
-#             plaintext += cipher_char
-#     return plaintext
+def decrypt_vigenere(ciphertext, keyword):
+    plaintext = ''
+    keyword_len = len(keyword)
+    for i in range(len(ciphertext)):
+        shift = ord(keyword[i % keyword_len]) - 65
+        cipher_char = ciphertext[i]
+        if cipher_char.isalpha():
+            plaintext += chr((ord(cipher_char) - shift - 65) % 26 + 65)
+        else:
+            plaintext += cipher_char
+    return plaintext
 
 
-# def vigcrypt1(ciphertext):
-#     # Determine the length of the keyword using the Kasiski test
-#     ciphertext = ciphertext.replace(" ","")
-#     likely_lengths = kasiski_test(ciphertext)
-#     print("Likely keyword lengths:", likely_lengths)
+def vigcrypt1(ciphertext):
+    # Determine the length of the keyword using the Kasiski test
+    ciphertext = ciphertext.replace(" ","")
+    likely_lengths = kasiski(ciphertext)
+    print("Likely keyword lengths:", likely_lengths)
 
-#     # Divide the ciphertext into segments
-#     segments = []
-#     for i in range(min(likely_lengths), len(ciphertext)):
-#         if i in likely_lengths:
-#             segments.append([ciphertext[j] for j in range(0, len(ciphertext), i)])
+    # Divide the ciphertext into segments
+    segments = []
+    for i in range(min(likely_lengths), len(ciphertext)):
+        if i in likely_lengths:
+            segments.append([ciphertext[j] for j in range(0, len(ciphertext), i)])
     
-#     # Perform frequency analysis on each segment
-#     keyword = ''
-#     for segment in segments:
-#         # Calculate the frequency of each letter in the segment
-#         freq = Counter(segment)
-#         most_common = freq.most_common(5)
+    # Perform frequency analysis on each segment
+    keyword = ''
+    for segment in segments:
+        # Calculate the frequency of each letter in the segment
+        freq = Counter(segment)
+        most_common = freq.most_common(5)
         
-#         # Calculate the shift value for the most common letter (assuming it's 'E')
-#         shift = (ord(most_common[0][0]) - 69) % 26
-#         keyword += chr(shift + 65)
+        # Calculate the shift value for the most common letter (assuming it's 'E')
+        shift = (ord(most_common[0][0]) - 69) % 26
+        keyword += chr(shift + 65)
     
-#     # Determine the keyword
-#     # print("Possible keywords:", keyword)
+    # Determine the keyword
+    # print("Possible keywords:", keyword)
 
-#     # Decrypt the ciphertext using the keyword
-#     plaintext = decrypt_vigenere(ciphertext, keyword)
-#     print(keyword)
-#     return [1, plaintext]
+    # Decrypt the ciphertext using the keyword
+    plaintext = decrypt_vigenere(ciphertext, keyword)
+    print(keyword)
+    return [1, plaintext]
 
 
 

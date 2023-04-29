@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block title %}
+    - Transposition Cipher
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .container{
+    text-align: justify;
+  }
+
+  .form-group, .btn{
+    margin-top: 0.3em;
+  }
+
+  .hiding{
+    display:none;
+  }
+</style>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h3>Instructions : </h3>
+            <div>Cipher text must consist only of alphabets .</div>
+        </div>
+    </div>
+    <br><br>
+
+    <div class="row">
+        <div class="col">
+        <form method="POST" action="/crypt">
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <input type="text" name="value" id="Ciphertext" style="width: 300px;" class="form-control" placeholder="Enter ciphertext" required>
+              </div>
+
+              <div class="form-group">
+                <label for="number">block-size:</label>
+                <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter block size" required>
+              </div>
+            <select name="ciphermethod" class="hiding">
+                <option>Vigenere cipher</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+    </div><br><br>
+    
+        <div>
+            <pre>
+            {%if ptext %}
+            <div class="row">
+                <div class="col">
+             plain text is : {{ptext}} 
+        </div>
+    </div>
+            {% elif err %}
+            <span>{{err}}</span>
+            {% endif %}
+        </pre>
+        </div>
+    </div>
+        {% endblock %}

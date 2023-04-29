@@ -1,55 +1,72 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="{{url_for('static',filename='enc.css')}}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="headingmethod">
-            <div class="heading1">
-                Hill Cipher Cryptanalysis
-            </div>
-            </div>
-            <div class="instr">
-            <div>
-            Instructions : 
-            </div>
-            <div>Cipher text must consist only of alphabets.</div>
-            <div>Plain text must consist only of alphabets.</div> 
-            </div>
-            </div>
-        <div class="formcontainer">
-            <div class="formouter">
+{% extends 'base.html' %}
+{% block title %}
+    - Hill Cipher
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .container{
+    text-align: justify;
+    position: absolute;
+    top: 100px;
+    left: 50px;
+  }
+
+  .form-group, .btn{
+    margin-top: 0.3em;
+  }
+
+  .hiding{
+    display:none;
+  }
+</style>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h3>Instructions:</h3>
+        <p>1. key size = size of key matrix.<br>
+          2. key = alphabetic characters only with length key size*2. <br>
+          3. plain text must consist only of alphabets.<br>
+          4. boguz characters will be added (eg: z, yz, xyz, wxyz) as required.</p>
+      </div>
+    </div>
+  
+    <div class="row">
+        <div class="col">
         <form method="POST" action="/crypt">
-            <label>Cipher text : </label><input type="text" name="value" required/>
-            <br><br>
-            <label>Plain text : </label><input type="text" name="key" required/>
-            &nbsp;&nbsp;
-            <label>Keysize : </label><input type="number" name="keysize" required/>
-            <br><br>
+            <div class="form-group">
+                <label for="text">Text:</label>
+                <input type="text" name="value" id="Plaintext" style="width: 300px;" class="form-control" placeholder="Enter ciphertext" required>
+              </div>
+              <div class="form-group">
+                <label for="text">plaintext:</label>
+                <input type="text" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter plaintext" required>
+              </div>
+              <div class="form-group">
+                <label for="number">key-size:</label>
+                <input type="number" name="keysize" style="width: 300px;" class="form-control" id="number2" placeholder="Enter keyize" required>
+              </div>
             <select name="ciphermethod" class="hiding">
                 <option>Hill cipher</option>
             </select>
-            <button>Submit</button>
-            <button id="bk">Back</button>
-        </form>
+            <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-        <br><br>
+  </div><br><br>
+
         <div>
-            {%if value %}
-            <span>The key calculated is {{key}} </span>
-            {{value}}
+            {%if key %}
+            <div class="row">
+                <div class="col">
+            The key calculated is {{key}}
+            </div></div>
             {% elif err %}
             <span>{{err}}</span>
             {% endif %}
         </div>
-    </div>
-        <script>
-            let u1=document.getElementById('bk')
-            u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/cryptanalysis"
-            })
-        </script>
-    </body>
-</html>
+        
+  </div>
+
+        {% endblock %}   

@@ -1,30 +1,44 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="{{url_for('static',filename='enc.css')}}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="headingmethod">
-            <div class="heading1">
-                Shift Cipher Encryption
-            </div>
-            </div>
-            <div class="instr">
-            <div>
-            Instructions : 
-            </div>
-            <div>Plain text must consist only of alphabets .</div>
-            <div>key must consist only of numericals. </div> 
-            </div>
-            </div>
-            <div class="formcontainer">
-            <div class="formouter">
+
+    {% extends 'base.html' %}
+    {% block title %}
+        - Shift Cipher
+    {% endblock %}
+
+{% block content %}
+    <style>
+        .my-section {
+            position: absolute;
+            top: 15%;
+            left:  10%;
+            text-align: left;
+        }
+
+        .form-section{
+            position: absolute;
+            top: 45%;
+            left:  40%;
+        }
+
+        .hiding
+        {
+            display:none;
+        }
+
+    </style>
+    <div class="my-section">
+        <p>
+        <h3>Instructions : </h3>
+        
+            1. Plain text should be alphabetic characters.<br>
+            2. key must consist only of numericals. 
+        
+    </p>
+    </div>  
+    <div class="form-section">
         <form method="POST" action="/encrypt">
-            <label>Plain text : </label><input type="text" name="value" required/>
+            <label>Text : &nbsp;</label><input type="text" name="value" required/>
             <br><br>
-            <label>Key : </label><input type="number" name="key" required/>
+            <label>Key : &nbsp;</label><input type="number" name="key" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
                 <option>Shift cipher</option>
@@ -49,5 +63,4 @@
                 window.location.href="http://127.0.0.1:5000/encrypttext"
             })
         </script>
-    </body>
-</html>
+    {% endblock %}

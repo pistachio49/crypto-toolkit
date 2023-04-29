@@ -1,33 +1,41 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="{{url_for('static',filename='enc.css')}}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="headingmethod">
-            <div class="heading1">
-                Hill Cipher Encryption
-            </div>
-            </div>
-            <div class="instr">
-            <div>
-            Instructions : 
-            </div>
-            <div>key size = size of key matrix.</div>
-            <div>key = alphabetic characters only with length key size*2. </div> 
-            <div>plain text must consist only of alphabets.</div>
-            <div>boguz characters will be added (eg: z, yz, xyz, wxyz) as required</div>
-            </div>
-            </div>
-            <div class="formcontainer">
-            <div class="formouter">
-        <form method="POST" action="/encrypt">
-            <label>Plain text : </label><input type="text" name="value" required/>
+{% extends 'base.html' %}
+        {% block title %}
+            - Affine Cipher
+		{% endblock %}
+
+    {% block content %}
+    <style>
+        .my-section {
+            position: absolute;
+            top: 15%;
+            left:  10%;
+            text-align: left;
+        }
+
+        .hiding
+        {
+            display:none;
+        }
+
+    </style>
+
+<div class="my-section">
+    <p>
+    <h3>Instructions : </h3>
+    
+        1. key size = size of key matrix.<br>
+        2. key = alphabetic characters only with length key size*2. <br>
+        3. plain text must consist only of alphabets.<br>
+        4. boguz characters will be added (eg: z, yz, xyz, wxyz) as required
+    
+</p>
+</div>  
+            
+        <form method="POST" action="/encrypt" id="form1">
+            <label>Text : &nbsp;&nbsp;</label><input type="text" name="value" required/>
             <br><br>
-            <label>Key : </label><input type="text" name="key" required/>
-            &nbsp;&nbsp;
+            <label>Key : &nbsp;&nbsp;&nbsp;</label><input type="text" name="key" required/>
+            <br><br>
             <label>Keysize : </label><input type="number" name="keysize" required/>
             <br><br>
             <select name="ciphermethod" class="hiding">
@@ -53,5 +61,4 @@
                 window.location.href="http://127.0.0.1:5000/encrypttext"
             })
         </script>
-    </body>
-</html>
+    {% endblock %}

@@ -32,11 +32,13 @@
     </div>
         <br><br>
         <div>
+            <pre>
             {%if value %}
             The plain text is : {{ptext}} 
             {% elif err %}
             <span>{{err}}</span>
             {% endif %}
+        </pre>
         </div>
     </div>
         <script>

@@ -1,66 +1,69 @@
+{% extends 'base.html' %}
+{% block logo %}
+    - Affine Cipher
+{% endblock %}
 
-    {% extends 'base.html' %}
-        {% block title %}
-            - Affine Cipher
-		{% endblock %}
+{% block content %}
 
-    {% block content %}
-    <style>
-        .my-section {
-            position: absolute;
-            top: 15%;
-            left:  10%;
-            text-align: left;
-        }
+<style>
+  .container{
+    text-align: justify;
+  }
 
-        .hiding
-        {
-            display:none;
-        }
+  .form-group, .btn{
+    margin-top: 0.3em;
+  }
 
-    </style>
+  .hiding{
+    display:none;
+  }
+</style>
 
-    <div class="my-section">
-        <p>
-        <h3>Instructions : </h3>
-        
-            1. Plain text should be alphabetic characters.<br>
-            2. Numericals are not allowed in plain text. <br>
-            3. Key1 should have multiplicative inverse in modulo 26.
-        
-    </p>
-</div>  
-
-    <!-- <div class="form-section"> -->
-    <form method="POST" action="/encrypt" id="form1">
-        <label>Text :  &nbsp;&nbsp;</label><input type="text" name="value" id="Plaintext" required/>
-        <br><br>
-        <label>Key1 : &nbsp;</label><input type="number" name="key" required/>
-        <br><br>
-        <label>Key2 : &nbsp;</label><input type="number" name="key2" required/>
-        <br><br>
-        <select name="ciphermethod" class="hiding">
-            <option>Affine cipher</option>
-        </select>
-        <button>Encrypt</button>
-        <button id="bk">Back</button>
-    </form>
- 
-    <div>
-        {%if value %}
-        <br> <br>
-        <span><h5>The Encrypted text for "{{inputvalue}}" using {{ciphermethod}} is : 
-        "{{value}}"</h5></span>
-        {% elif err %}
-        <span>{{err}}</span>
-        {% endif %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Instructions:</h3>
+      <p>1. Plain text should be alphabetic characters.<br>
+        2. Numericals are not allowed in plain text. <br>
+        3. Key1 should have multiplicative inverse in modulo 26.</p>
     </div>
-<!-- </div> -->
+  </div>
+  <br><br>
 
-    <script>
-        let u1=document.getElementById('bk')
-            u1.addEventListener('click',()=>{
-            window.location.href="http://127.0.0.1:5000/encrypttext"
-            })
-    </script>
-        {% endblock %}
+  <div class="row">
+    <div class="col">
+      <form method="POST" action="/encrypt" id="form1">
+        <div class="form-group">
+          <label for="text">Text:</label>
+          <input type="text" name="value" id="Plaintext" style="width: 300px;" class="form-control" placeholder="Enter plaintext" required>
+        </div>
+        <div class="form-group">
+          <label for="number">key1:</label>
+          <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key1" required>
+        </div>
+        <div class="form-group">
+          <label for="number">key2:</label>
+          <input type="number" name="key2" style="width: 300px;" class="form-control" id="number2" placeholder="Enter key2" required>
+        </div>
+        <select name="ciphermethod" class="hiding">
+          <option>Affine cipher</option>
+      </select>
+        <button type="submit" class="btn btn-primary">Encrypt</button>
+      </form>
+    </div>
+  </div><br><br>
+
+  {%if value %}
+  <div class="row">
+    <div class="col">
+      <h4>Encrypted text:</h4>
+      <pre><p id="output">{{value}}</p></pre>
+    </div>
+  </div>
+  {% elif err %}
+    {{err}}
+    {% endif %}
+</div>
+
+
+{% endblock %}

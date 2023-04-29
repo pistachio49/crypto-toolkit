@@ -110,37 +110,104 @@ def affinecrypt1(ctext):
     else:
         return "invalid!"
 
-def hillcrypt1(ctext,ptext,keysize):
-    try:
-        plain_text=ptext.lower().replace(" ","")
-        cipher_text=ctext.upper()
-        key_size=int(keysize)
-        plain_text=plain_text[:key_size*key_size]
-        cipher_text=cipher_text[:key_size*key_size]
-        plain_matrix=[]
-        row=[]
-        for p in plain_text:
-            row.append(ord(p)%97)
-            if len(row)==key_size:
-                plain_matrix.append(row)
-                row=[]
-        # print(array(plain_matrix))
-        cipher_matrix=[]
-        row=[]
-        for c in cipher_text:
-            row.append(ord(c)%65)
-            if len(row)==key_size:
-                cipher_matrix.append(row)
-                row=[]
-        # print(array(cipher_matrix))
-        invplain_matrix=Matrix(plain_matrix).inv_mod(26)
-        # print(array(invplain_matrix))
-        key_matrix=(Matrix(invplain_matrix)*Matrix(cipher_matrix)%26)
-        # print(array(key_matrix))
-        key=""
-        for k in list(key_matrix):
-            key+=chr(65+k)
-        return key
-    except Exception as e:
-        print(e)
-        return "invalid!"
+# def hillcrypt1(ctext,ptext,keysize):
+    # try:
+    #     plain_text=ptext.lower().replace(" ","")
+    #     cipher_text=ctext.upper()
+    #     key_size=int(keysize)
+    #     plain_text=plain_text[:key_size*key_size]
+    #     cipher_text=cipher_text[:key_size*key_size]
+    #     plain_matrix=[]
+    #     row=[]
+    #     for p in plain_text:
+    #         row.append(ord(p)%97)
+    #         if len(row)==key_size:
+    #             plain_matrix.append(row)
+    #             row=[]
+    #     # print(array(plain_matrix))
+    #     cipher_matrix=[]
+    #     row=[]
+    #     for c in cipher_text:
+    #         row.append(ord(c)%65)
+    #         if len(row)==key_size:
+    #             cipher_matrix.append(row)
+    #             row=[]
+    #     # print(array(cipher_matrix))
+    #     invplain_matrix=Matrix(plain_matrix).inv_mod(26)
+    #     # print(array(invplain_matrix))
+    #     key_matrix=(Matrix(invplain_matrix)*Matrix(cipher_matrix)%26)
+    #     # print(array(key_matrix))
+    #     key=""
+    #     for k in list(key_matrix):
+    #         key+=chr(65+k)
+    #     return key
+    # except Exception as e:
+    #     print(e)
+    #     return "invalid!"
+    import numpy as np
+from collections import Counter
+
+def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a % b)
+
+def mod_inverse(a, m):
+    a = a % m
+    for x in range(1, m):
+        if (a * x) % m == 1:
+            return x
+    return 1
+
+def hillcrypt1(ciphertext, block_size):
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    ciphertext = ciphertext.upper()
+    alphabet_size = len(alphabet)
+    n = block_size
+    
+    # Determine expected letter frequencies for the plaintext language
+    freqs = {'A': 0.0817, 'B': 0.0150, 'C': 0.0278, 'D': 0.0425, 'E': 0.1270, 
+             'F': 0.0223, 'G': 0.0202, 'H': 0.0609, 'I': 0.0697, 'J': 0.0015, 
+             'K': 0.0077, 'L': 0.0403, 'M': 0.0241, 'N': 0.0675, 'O': 0.0751, 
+             'P': 0.0193, 'Q': 0.0010, 'R': 0.0599, 'S': 0.0633, 'T': 0.0906, 
+             'U': 0.0276, 'V': 0.0098, 'W': 0.0236, 'X': 0.0015, 'Y': 0.0197, 'Z': 0.0007}
+    
+    # Determine the ciphertext blocks and their corresponding plaintext blocks
+    ciphertext_blocks = [ciphertext[i:i+n] for i in range(0, len(ciphertext), n)]
+    plaintext_blocks = []
+    for block in ciphertext_blocks:
+        block_freqs = Counter(block)
+        block_freqs = {k: v/len(block) for k, v in block_freqs.items()}
+        diff_freqs = {k: abs(v - freqs[k]) for k, v in block_freqs.items() if k in freqs}
+        best_guess = ''.join([x[0] for x in sorted(diff_freqs.items(), key=lambda x: x[1])][:n])
+        plaintext_blocks.append(best_guess)
+    
+    # Construct the equation system
+    A = []
+    B = []
+    for i in range(len(plaintext_blocks)):
+        a_row = []
+        for j in range(n):
+            a_row += [alphabet.index(plaintext_blocks[i][j])]
+        A.append(a_row)
+        b_row = []
+        for j in range(n):
+            b_row += [alphabet.index(ciphertext_blocks[i][j])]
+        B.append(b_row)
+    A = np.array(A)
+    B = np.array(B)
+    B = B.flatten()
+
+    # Solve the equation system
+    det = int(round(np.linalg.det(A))) % alphabet_size
+    if gcd(det, alphabet_size) != 1:
+        print('Error: key matrix is not invertible')
+        return None
+    inv_det = mod_inverse(det, alphabet_size)
+    adj = inv_det * np.round(np.linalg.inv(A) * det)
+    adj = adj % alphabet_size
+    key = adj.dot(B) % alphabet_size
+    
+    # Decrypt the ciphertext using the found key
+    key = key.reshape(n, n)
+    return key

@@ -848,7 +848,7 @@ def crypt():
             return render_template("vigcrypt.html",err="Cipher text must only consist of alphabets")
         d1=vigcrypt1(value)
         if(d1!="invalid!"):
-            return render_template("vigcrypt.html",key=d1[0],ptext=d1[1])
+            return render_template("vigcrypt.html",key=d1[0],ptext=d1[1], value=1)
         else:
             return render_template("vigcrypt.html",err="valid word is not present in the used wordlist")
     

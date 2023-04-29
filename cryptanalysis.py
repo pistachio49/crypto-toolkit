@@ -144,7 +144,7 @@ def affinecrypt1(ctext):
     # except Exception as e:
     #     print(e)
     #     return "invalid!"
-    import numpy as np
+import numpy as np
 from collections import Counter
 
 def gcd(a, b):
@@ -163,7 +163,7 @@ def hillcrypt1(ciphertext, block_size):
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     ciphertext = ciphertext.upper()
     alphabet_size = len(alphabet)
-    n = block_size
+    n = int(block_size)
     
     # Determine expected letter frequencies for the plaintext language
     freqs = {'A': 0.0817, 'B': 0.0150, 'C': 0.0278, 'D': 0.0425, 'E': 0.1270, 
@@ -173,6 +173,7 @@ def hillcrypt1(ciphertext, block_size):
              'U': 0.0276, 'V': 0.0098, 'W': 0.0236, 'X': 0.0015, 'Y': 0.0197, 'Z': 0.0007}
     
     # Determine the ciphertext blocks and their corresponding plaintext blocks
+    print(ciphertext)
     ciphertext_blocks = [ciphertext[i:i+n] for i in range(0, len(ciphertext), n)]
     plaintext_blocks = []
     for block in ciphertext_blocks:

@@ -1,64 +1,70 @@
 {% extends 'base.html' %}
-        {% block title %}
-            - Affine Cipher
-		{% endblock %}
+{% block logo %}
+    - Hill Cipher
+{% endblock %}
 
-    {% block content %}
-    <style>
-        .my-section {
-            position: absolute;
-            top: 15%;
-            left:  10%;
-            text-align: left;
-        }
+{% block content %}
 
-        .hiding
-        {
-            display:none;
-        }
+<style>
+  .container{
+    text-align: justify;
+  }
 
-    </style>
+  .form-group, .btn{
+    margin-top: 0.3em;
+  }
 
-<div class="my-section">
-    <p>
-    <h3>Instructions : </h3>
-    
-        1. key size = size of key matrix.<br>
+  .hiding{
+    display:none;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Instructions:</h3>
+      <p>1. key size = size of key matrix.<br>
         2. key = alphabetic characters only with length key size*2. <br>
         3. plain text must consist only of alphabets.<br>
-        4. boguz characters will be added (eg: z, yz, xyz, wxyz) as required
-    
-</p>
-</div>  
-            
-        <form method="POST" action="/encrypt" id="form1">
-            <label>Text : &nbsp;&nbsp;</label><input type="text" name="value" required/>
-            <br><br>
-            <label>Key : &nbsp;&nbsp;&nbsp;</label><input type="text" name="key" required/>
-            <br><br>
-            <label>Keysize : </label><input type="number" name="keysize" required/>
-            <br><br>
-            <select name="ciphermethod" class="hiding">
-                <option>Hill cipher</option>
-            </select>
-            <button>Encrypt</button>
-            <button id="bk">Back</button>
-        </form>
-        </div>
-        <br><br>
-        <div>
-            {%if value %}
-            <span>The Encrypted text for "{{inputvalue}}" using {{ciphermethod}} is : </span>
-            "{{value}}"
-            {% elif err %}
-            <span>{{err}}</span>
-            {% endif %}
-        </div>
+        4. boguz characters will be added (eg: z, yz, xyz, wxyz) as required.</p>
     </div>
-        <script>
-            let u1=document.getElementById('bk')
-            u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/encrypttext"
-            })
-        </script>
-    {% endblock %}
+  </div>
+  <br><br>
+
+  <div class="row">
+    <div class="col">
+      <form method="POST" action="/encrypt" id="form1">
+        <div class="form-group">
+          <label for="text">Text:</label>
+          <input type="text" name="value" id="Plaintext" style="width: 300px;" class="form-control" placeholder="Enter plaintext" required>
+        </div>
+        <div class="form-group">
+          <label for="number">key:</label>
+          <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key1" required>
+        </div>
+        <div class="form-group">
+          <label for="number">key-size:</label>
+          <input type="number" name="keysize" style="width: 300px;" class="form-control" id="number2" placeholder="Enter key2" required>
+        </div>
+        <select name="ciphermethod" class="hiding">
+          <option>Hill cipher</option>
+      </select>
+        <button type="submit" class="btn btn-primary">Encrypt</button>
+      </form>
+    </div>
+  </div><br><br>
+
+  {%if value %}
+  <div class="row">
+    <div class="col">
+      <h4>Encrypted text:</h4>
+      <pre><p id="output">{{value}}</p></pre>
+    </div>
+  </div>
+  {% elif err %}
+    {{err}}
+    {% endif %}
+</div>
+
+
+{% endblock %}

@@ -1,51 +1,59 @@
-<html>
-    <head>
-        <link rel="stylesheet" href="{{url_for('static',filename='enc.css')}}">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div class="headingmethod">
-            <div class="heading1">
-                Affine Cipher Cryptanalysis
-            </div>
-            </div>
-            <div class="instr">
-            <div>
-            Instructions : 
-            </div>
-            <div>Cipher text must consist only of alphabets.</div>
-            </div>
-            </div>
-            <div class="formcontainer">
-                <div class="formouter">
-        <form method="POST" action="/crypt">
-            <label>Cipher text : </label><input id="Ciphertext" type="text" name="value" required/>
-            <br><br>
-            <select name="ciphermethod" class="hiding">
-                <option>Affine cipher</option>
-            </select>
-            <button>Submit</button>
-            <button id="bk">Back</button>
-        </form>
+{% extends 'base.html' %}
+{% block logo %}
+    - Affine Cipher
+{% endblock %}
+
+{% block content %}
+
+<style>
+  .container{
+    text-align: justify;
+  }
+
+  .form-group, .btn{
+    margin-top: 0.3em;
+  }
+
+  .hiding{
+    display:none;
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Instructions:</h3>
+      <p>1. Ciphertext should be alphabetic characters.</p>
     </div>
-        <br><br>
-        <div>
-            {%if value %}
-            <span>The most common text is : {{value}} </span>
-            <br><br>
-            <span>The Key Pair is : {{key}} </span>
-            {% elif err %}
-            <span>{{err}}</span>
-            {% endif %}
+  </div>
+  <br><br>
+
+  <div class="row">
+    <div class="col">
+      <form method="POST" action="/encrypt" id="form1">
+        <div class="form-group">
+          <label for="text">Ciphertext:</label>
+          <input type="text" name="value" id="Ciphertext" style="width: 300px;" class="form-control" placeholder="Enter plaintext" required>
         </div>
+        <select name="ciphermethod" class="hiding">
+          <option>Affine cipher</option>
+      </select>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     </div>
-        <script>
-            let u1=document.getElementById('bk')
-            u1.addEventListener('click',()=>{
-                window.location.href="http://127.0.0.1:5000/cryptanalysis"
-            })
-        </script>
-    </body>
-</html>
+  </div><br><br>
+
+  {%if value %}
+  <div class="row">
+    <div class="col">
+      <h4>Encrypted text:</h4>
+      <pre><p id="output">{{value}}</p></pre>
+    </div>
+  </div>
+  {% elif err %}
+    {{err}}
+    {% endif %}
+</div>
+
+
+{% endblock %}

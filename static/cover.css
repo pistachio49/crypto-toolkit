@@ -31,7 +31,8 @@ html,body {
   /* text-shadow: 0 .05rem .1rem rgb(254, 251, 251); */
   box-shadow: inset 0 0 5rem rgba(20, 20, 93, 0.419);
   background-color: #d1d5dcd4;
-  overflow-y: scroll;
+  overflow-x: hidden;
+  /* overflow-y: scroll; */
   /* height: 100%; */
   /* color: white; */
 }

@@ -154,7 +154,16 @@ k: plmoknijbuhvygctfxrdzeswaq
 c: plmok
 
 
-	
+Hill:
+c - WBVE
+p - INMA
+keysize = 2
+
+
+Input  : Plaintext: ACT
+Key: GYBNQKURP
+Output : Ciphertext: POH
+keysize : 3
 		
 	
 

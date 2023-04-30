@@ -24,6 +24,7 @@ def transcrypt1(value, keysize):
             if i*num_rows + j < len(ciphertext):
                 transposition_matrix[i][j] = ciphertext[i*num_rows + j]
 
+    transposition_matrix = list(map(list, zip(*transposition_matrix)))
     column_indices = list(range(len(transposition_matrix[0])))
 
     # Generate all permutations of the column indices

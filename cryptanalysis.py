@@ -69,6 +69,8 @@ def monocrypt1(ctext):
     plaintext = decrypt(ciphertext, key)
     # print("key:", key)
     # print("Plaintext:", plaintext)
+    original_dict = key
+    key = {value: key for key, value in original_dict.items()}
     return {"plaintext":plaintext, "key":key}
 
 def shiftcrypt1(ctext):

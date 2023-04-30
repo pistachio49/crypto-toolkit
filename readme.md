@@ -148,6 +148,11 @@ p:    todayisagoodday
 k:    17
 c:    kfurpzjrxffuurp
 
+Mono:
+p: abcde
+k: plmoknijbuhvygctfxrdzeswaq
+c: plmok
+
 
 	
 		

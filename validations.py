@@ -1,6 +1,6 @@
 #validating monoalphabetic substitution cipher
 def monovalidation(val):
-    if(len(val)==26 and val.isalpha()):
+    if(val.isalpha()):
         return True
     else:
         return False

@@ -133,6 +133,20 @@ TRANSPOSITION:
 	Key: should be space separated numericals. and they should have (numericals in 1 2 3 4... check in front end)
 	
 	
+Examples:
+
+Affine:
+p:    securityisapriority
+k:    17,23
+c:    rnfzadipdrxsadbadip
+
+Shift:
+p:    todayisagoodday
+k:    17
+c:    kfurpzjrxffuurp
+
+
+	
 		
 	
 

@@ -4,6 +4,49 @@ from sympy import Matrix
 import numpy as np
 from math import ceil
 from numpy import array
+import itertools
+
+def transcrypt1(value, keysize):
+    # The ciphertext to be decrypted
+    ciphertext = value.lower() #"EVLNAAETOFCRLTTUOOYMNEAGERTTDSYFEWSPYSH"
+    block_size = int(keysize) #5
+
+    # Calculate the number of rows required for the transposition matrix
+    num_rows = ceil(len(ciphertext) / block_size)
+    print(num_rows)
+
+    # Create an empty transposition matrix
+    transposition_matrix = [[''] * num_rows for _ in range(block_size)]
+
+    # Fill the transposition matrix column-wise
+    for i in range(block_size):
+        for j in range(num_rows):
+            if i*num_rows + j < len(ciphertext):
+                transposition_matrix[i][j] = ciphertext[i*num_rows + j]
+
+    column_indices = list(range(len(transposition_matrix[0])))
+
+    # Generate all permutations of the column indices
+    column_permutations = list(itertools.permutations(column_indices))
+
+    # Generate all permutations of the matrix by rearranging the columns
+    matrix_permutations = []
+    for perm in column_permutations:
+        matrix_permutation = [[row[i] for i in perm] for row in transposition_matrix]
+        matrix_permutations.append(matrix_permutation)
+        
+    # Decrypt the ciphertext by reading the transposition matrix row-wise
+    plaintext = []
+    for matrix in matrix_permutations:
+        ptext = ""
+        for row in matrix:
+            ptext += "".join(row)
+        plaintext.append(ptext)
+
+    # print("Decrypted plaintext:", plaintext)
+    return plaintext
+    
+    
 
 expected_frequencies = {
     'a': 0.08167, 'b': 0.01492, 'c': 0.02782, 'd': 0.04253,

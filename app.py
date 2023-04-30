@@ -838,7 +838,7 @@ def crypt():
             return render_template("affinecrypt.html",err="valid word is not present in the used wordlist")
     elif(ciphermethod=="Hill cipher"):
         if(value.isalpha()==False):
-            return render_template("vigcrypt.html",err="Cipher text must only consist of alphabets")
+            return render_template("hillcrypt.html",err="Cipher text must only consist of alphabets")
         d1=hillcrypt1(value,key,keysize)
         if(d1!="invalid!"):
             return render_template("hillcrypt.html",key=d1)
@@ -852,6 +852,15 @@ def crypt():
             return render_template("vigcrypt.html",key=d1[0],ptext=d1[1], value=1)
         else:
             return render_template("vigcrypt.html",err="valid word is not present in the used wordlist")
+    elif(ciphermethod=="Transposition cipher"):
+        if(value.isalpha()==False):
+            return render_template("transpositioncrypt.html",err="Cipher text must only consist of alphabets")
+        d1=transcrypt1(value, key)
+        if(d1!="invalid!"):
+            return render_template("transpositioncrypt.html",plaintext=d1)
+        else:
+            return render_template("transpositioncrypt.html",err="valid word is not present in the used wordlist")
+
     
 if __name__=='__main__':
     app.run(debug=True,port=5000)

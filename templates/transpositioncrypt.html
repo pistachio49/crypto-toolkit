@@ -5,6 +5,24 @@
 
 {% block content %}
 
+<script>
+  function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less";
+    moreText.style.display = "inline";
+  }
+}
+</script>
+
 <style>
   .container{
     text-align: justify;
@@ -13,6 +31,8 @@
   .form-group, .btn{
     margin-top: 0.3em;
   }
+
+  #more {display: none;}
 
   .hiding{
     display:none;
@@ -41,7 +61,7 @@
                 <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter block size" required>
               </div>
             <select name="ciphermethod" class="hiding">
-                <option>Vigenere cipher</option>
+                <option>Transposition cipher</option>
             </select>
             <button type="submit" class="btn btn-primary">Submit</button>
 
@@ -50,17 +70,29 @@
     </div><br><br>
     
         <div>
-            <pre>
-            {%if ptext %}
+            <!-- <pre> -->
+            {%if plaintext %}
             <div class="row">
-                <div class="col">
-             plain text is : {{ptext}} 
-        </div>
-    </div>
+              <div class="col">
+                <p>
+                  possible plaintexts are: 
+                  <span id="dots">...</span>
+                  <span id="more">
+                  {% for ptext in plaintext %}
+                  
+                  
+                    <span class="d-inline-block">{{ ptext }}, </span>
+                  {% endfor %} 
+                  
+                </span>
+                </p>
+                <button onclick="myFunction()" id="myBtn" class="btn btn-dark btn-sm">Read more</button>
+              </div>
+            </div>
             {% elif err %}
             <span>{{err}}</span>
             {% endif %}
-        </pre>
+        <!-- </pre> -->
         </div>
     </div>
         {% endblock %}

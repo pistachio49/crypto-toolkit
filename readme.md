@@ -173,8 +173,31 @@ p-
 WhatiscryptocurrencyAcryptocurrencyisadigitalcurrencywhichisanalternativeformofpaymentcreatedusingencryptionalgorithmsTheuseofencryptiontechnologiesmeansthatcryptocurrenciesfunctionbothasacurrencyandasavirtualaccountingsystem
 
 k-apple
-		
-	
+
+Transposition:
+
+Railfence;
+
+P: metmeatthepark
+c: MEMATEAKETETHPR
+
+fixed columns:
+P: metmeatthepark
+k : 4
+
+permutation: 	
+P: enemyattackstonightz
+K: 3 1 4 5 2	
+C: EEMYNTAACTTKONSHITZG
+
+combined approach:
+
+P: enemyattackstonightz
+K: 3 1 4 5 2	
+c: ETTHEAKIMAOTYCNZNTSG
+
+
+
 
 	
 		

@@ -5,24 +5,71 @@ import numpy as np
 from math import ceil
 from numpy import array
 
-def monocrypt1(ctext,ptext):
-    plain_text=ptext.lower().replace(" ","")
-    cipher_text=ctext.upper().replace(" ","")
-    len1=len(plain_text)
-    len2=len(cipher_text)
-    if ((len1==len2)):
-        unsorted_keys={}
-        ind=0
-        for p in plain_text:
-            unsorted_keys[p]=cipher_text[ind]
-            ind+=1
-        unsorted_keys=sorted(unsorted_keys.items())
-        key={}
-        for i,j in unsorted_keys:
-            key[i]=j
-        return key
-    else:
-        return "invalid!"
+expected_frequencies = {
+    'a': 0.08167, 'b': 0.01492, 'c': 0.02782, 'd': 0.04253,
+    'e': 0.12702, 'f': 0.02228, 'g': 0.02015, 'h': 0.06094,
+    'i': 0.06966, 'j': 0.00153, 'k': 0.00772, 'l': 0.04025,
+    'm': 0.02406, 'n': 0.06749, 'o': 0.07507, 'p': 0.01929,
+    'q': 0.00095, 'r': 0.05987, 's': 0.06327, 't': 0.09056,
+    'u': 0.02758, 'v': 0.00978, 'w': 0.0236, 'x': 0.0015,
+    'y': 0.01974, 'z': 0.00074
+}
+
+def frequency_analysis(ciphertext):
+    """
+    Perform frequency analysis on a ciphertext and return a substitution key
+    """
+    # count the frequency of each letter in the ciphertext
+    freq = {}
+    for letter in ciphertext:
+        if letter.isalpha():
+            if letter.lower() not in freq:
+                freq[letter.lower()] = 1
+            else:
+                freq[letter.lower()] += 1
+                
+    # calculate the frequency distribution
+    total = sum(freq.values())
+    distribution = {}
+    for letter in freq:
+        distribution[letter] = freq[letter] / total
+    
+    # sort the letters by frequency
+    sorted_letters = sorted(distribution, key=distribution.get, reverse=True)
+    
+    # create the substitution key
+    key = {}
+    for i in range(len(sorted_letters)):
+        key[sorted_letters[i]] = list(expected_frequencies.keys())[i]
+    
+    return key
+
+def decrypt(ciphertext, key):
+    """
+    Decrypt a ciphertext using a substitution key
+    """
+    plaintext = ''
+    for letter in ciphertext:
+        if letter.isalpha():
+            if letter.isupper():
+                plaintext += key[letter.lower()].upper()
+            else:
+                plaintext += key[letter]
+        else:
+            plaintext += letter
+            
+    return plaintext
+
+def monocrypt1(ctext):
+    ciphertext = "".join(ctext.split(" "))
+    # ciphertext = ctext #"Uif mjtu pg bqqmf isphfdujpo jt tjdifs xpsme"
+    # plaintext = ptext
+    
+    key = frequency_analysis(ciphertext)
+    plaintext = decrypt(ciphertext, key)
+    # print("key:", key)
+    # print("Plaintext:", plaintext)
+    return {"plaintext":plaintext, "key":key}
 
 def shiftcrypt1(ctext):
     cipher_text=ctext.upper()

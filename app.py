@@ -813,13 +813,14 @@ def crypt():
     a=0
     d1=""
     if(ciphermethod=="Monoalphabetic Substitution cipher"):
-        if(value.isalpha()==False):
-            return render_template("monocrypt.html",err="Cipher text must only consist of alphabets")
-        if(key.isalpha()==False):
-            return render_template("monocrypt.html",err="Plain text must only consist of alphabets")
-        d1=monocrypt1(value,key)
+        # if(value.isalpha()==False):
+        #     return render_template("monocrypt.html",err="Cipher text must only consist of alphabets")
+        # if(key.isalpha()==False):
+        #     return render_template("monocrypt.html",err="Plain text must only consist of alphabets")
+        d1=monocrypt1(value)
+        # print(d1[0])
         if(d1=="invalid!"):
-            return render_template("monocrypt.html",err="Enter a valid input")
+            return render_template("monocrypt.html",value=d1["key"], ptext=d1["plaintext"],err="Enter a valid input")
         else:
             return render_template("monocrypt.html",value=d1,inputvalue=value,ciphermethod=ciphermethod) 
     elif(ciphermethod=="Shift cipher"):

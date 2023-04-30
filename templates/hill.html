@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block logo %}
+{% block title %}
     - Hill Cipher
 {% endblock %}
 
@@ -40,11 +40,11 @@
         </div>
         <div class="form-group">
           <label for="number">key:</label>
-          <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key1" required>
+          <input type="number" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key" required>
         </div>
         <div class="form-group">
           <label for="number">key-size:</label>
-          <input type="number" name="keysize" style="width: 300px;" class="form-control" id="number2" placeholder="Enter key2" required>
+          <input type="number" name="keysize" style="width: 300px;" class="form-control" id="number2" placeholder="Enter keysize" required>
         </div>
         <select name="ciphermethod" class="hiding">
           <option>Hill cipher</option>

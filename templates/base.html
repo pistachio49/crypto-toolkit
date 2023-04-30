@@ -106,12 +106,14 @@
     <div>
       <h3 class="float-md-start mb-0">CryptKit{% block title %}
         {% endblock %}</h3>
+        {% block nav %}
       <nav class="nav nav-masthead justify-content-end float-md-end">
         <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="/">Home</a>
         <a class="nav-link fw-bold py-1 px-0" href="/encrypttext">Encryption</a>
         <a class="nav-link fw-bold py-1 px-0" href="decrypttext">Decryption</a>
         <a class="nav-link fw-bold py-1 px-0" href="/cryptanalysis">Cryptanalysis</a>
       </nav>
+      {% endblock %}
     </div>
   </header>
 

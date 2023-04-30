@@ -45,6 +45,9 @@ HILL:
 	
 	CRYPTANALYSIS:
 	plain and cipher text should be alphabets.
+	cipher - WBVE
+	plain - INMA
+	keysize = 2
 	
 SHIFT/CAESER:
 

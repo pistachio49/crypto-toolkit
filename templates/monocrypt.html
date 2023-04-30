@@ -36,15 +36,15 @@
 
 <div class="row">
     <div class="col">
-        <form method="POST" action="/decrypt">
+        <form method="POST" action="/crypt">
             <div class="form-group">
                 <label for="text">Text:</label>
                 <input type="text" name="value" id="Ciphertext" style="width: 300px;" class="form-control" placeholder="Enter ciphertext" required>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="text">Plaintext:</label>
                 <input type="text" name="key" id="Plaintext" style="width: 300px;" class="form-control" placeholder="Enter plaintext" required>
-            </div>
+            </div> -->
               <!-- <div class="form-group">
                 <label for="text">key:</label>
                 <input type="text" name="key" style="width: 300px;" class="form-control" id="number1" placeholder="Enter key" required>
@@ -62,7 +62,8 @@
 <div class="row">
   <div class="col">
     <h4>Decrypted text:</h4>
-    <pre><p id="output">{{value}}</p></pre>
+    <pre><p id="output">{{value}}</p>
+  </pre>
   </div>
 </div>
 {% elif err %}

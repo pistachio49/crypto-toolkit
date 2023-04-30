@@ -140,6 +140,10 @@ p:    securityisapriority
 k:    17,23
 c:    rnfzadipdrxsadbadip
 
+Shift:
+p:    todayisagoodday
+k:    17
+c:    kfurpzjrxffuurp
 
 
 	

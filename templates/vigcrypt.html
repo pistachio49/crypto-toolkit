@@ -45,11 +45,15 @@
     </div><br><br>
     
         <div>
-            <pre>
+            
             {%if ptext %}
+            
+          <h3>Output</h3>
+          <pre>
             <div class="row">
                 <div class="col">
              plain text is : {{ptext}} 
+             key is : {{key}}
         </div>
     </div>
             {% elif err %}

@@ -164,6 +164,10 @@ Input  : Plaintext: ACT
 Key: GYBNQKURP
 Output : Ciphertext: POH
 keysize : 3
+
+
+Vigenere crypt:
+c - WwpemsrgjttdrfvrtcncArgjttdrfvrtcncihpomgxilpcjgcinrnhlirwtwacpwxegclxiktqsrbdqtanbprtrgpettsfwicvprcgnaxidclpgdgtxhbhElejhpsftcnvyeitsnitnlndazkithxiachelairccpidnyrgtygithqynritsnqdelahpnyrgtygypcoespktvtjpwecrdfrtxcrwyhipq
 		
 	
 

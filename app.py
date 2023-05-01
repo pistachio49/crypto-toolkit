@@ -839,12 +839,15 @@ def crypt():
     elif(ciphermethod=="Hill cipher"):
         if(value.isalpha()==False):
             return render_template("hillcrypt.html",err="Cipher text must only consist of alphabets")
-        d1=hillcrypt1(value,key,keysize)
-        
-        if(d1!="invalid!"):
-            return render_template("hillcrypt.html",key=d1)
-        else:
-            return render_template("hillcrypt.html",err="valid word is not present in the used wordlist")
+        try:
+            d1=hillcrypt1(value,key,keysize)
+            
+            if(d1!="invalid!"):
+                return render_template("hillcrypt.html",key=d1)
+            else:
+                return render_template("hillcrypt.html",err="valid word is not present in the used wordlist")
+        except:
+            return render_template("hillcrypt.html",err="invalid")
     elif(ciphermethod=="Vigenere cipher"):
         if(value.isalpha()==False):
             return render_template("vigcrypt.html",err="Cipher text must only consist of alphabets")

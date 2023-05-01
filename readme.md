@@ -1,17 +1,13 @@
-Install python3 on linux device and go to the root folder.
+Install python3 on linux device. Then go to the root folder and do the following.
 <div class="scrollable" id="scrollable">
 	<ul>
-		<li>List Item</li>
-		<li>List Item</li>
-		<li>List Item</li>
-		<li>List Item</li>
-		<li>List Item</li>
-		<li>List Item</li>
+		<li>install modules using command : pip install -r requirements.txt</li>
+		<li>Run the server using command: python3 app.py </li>
 	</ul>
 </div>
-install modules using command : pip install -r requirements.txt
 
-Run the server using command: python3 app.py 
+
+
 
 
 Everytime if numerical appear in plain/cipher text error message will popup.<br>
@@ -106,7 +102,7 @@ TRANSPOSITION:
 	
    PERMUTATION CIPHER:
    	ENCRYPTION:
-   	Message: Boguz characters are added (like z,yz,xyz,..)
+   	Boguz characters are added (like z,yz,xyz,..)
    	Plain text: alphabets are only allowed
 	Key: should be space separated numericals. and they should have (numericals in 1 2 3 4... check in front end)
 	
@@ -122,70 +118,70 @@ TRANSPOSITION:
 	Key: should be space separated numericals. and they should have (numericals in 1 2 3 4... check in front end)
 	
 	DECRYPTION:
-	Message: key size should be a multiple of cipher text size
+	key size should be a multiple of cipher text size
 	Cipher text text: alphabets are only allowed
 	Key: should be space separated numericals. and they should have (numericals in 1 2 3 4... check in front end)
 	
 	
 Examples:
 
-Affine:
-p:    securityisapriority
-k:    17,23
-c:    rnfzadipdrxsadbadip
+Affine:<br>
+p:    securityisapriority<br>
+k:    17,23<br>
+c:    rnfzadipdrxsadbadip<br>
 
-Shift:
-p:    todayisagoodday
-k:    17
-c:    kfurpzjrxffuurp
+Shift:<br>
+p:    todayisagoodday<br>
+k:    17<br>
+c:    kfurpzjrxffuurp<br>
 
-Mono:
-p: abcde
-k: plmoknijbuhvygctfxrdzeswaq
-c: plmok
-
-
-Hill:
-c - WBVE
-p - INMA
-keysize = 2
+Mono:<br>
+p: abcde<br>
+k: plmoknijbuhvygctfxrdzeswaq<br>
+c: plmok<br>
 
 
-Input  : Plaintext: ACT
-Key: GYBNQKURP
-Output : Ciphertext: POH
-keysize : 3
+Hill:<br>
+c - WBVE<br>
+p - INMA<br>
+keysize = 2<br>
 
 
-Vigenere crypt:
-c - WwpemsrgjttdrfvrtcncArgjttdrfvrtcncihpomgxilpcjgcinrnhlirwtwacpwxegclxiktqsrbdqtanbprtrgpettsfwicvprcgnaxidclpgdgtxhbhElejhpsftcnvyeitsnitnlndazkithxiachelairccpidnyrgtygithqynritsnqdelahpnyrgtygypcoespktvtjpwecrdfrtxcrwyhipq
+Input  : Plaintext: ACT<br>
+Key: GYBNQKURP<br>
+Output : Ciphertext: POH<br>
+keysize : 3<br>
+
+
+Vigenere crypt:<br>
+c - WwpemsrgjttdrfvrtcncArgjttdrfvrtcncihpomgxilpcjgcinrnhlirwtwacpwxegclxiktqsrbdqtanbprtrgpettsfwicvprcgnaxidclpgdgtxhbhElejhpsftcnvyeitsnitnlndazkithxiachelairccpidnyrgtygithqynritsnqdelahpnyrgtygypcoespktvtjpwecrdfrtxcrwyhipq<br>
 
 p-
-WhatiscryptocurrencyAcryptocurrencyisadigitalcurrencywhichisanalternativeformofpaymentcreatedusingencryptionalgorithmsTheuseofencryptiontechnologiesmeansthatcryptocurrenciesfunctionbothasacurrencyandasavirtualaccountingsystem
+WhatiscryptocurrencyAcryptocurrencyisadigitalcurrencywhichisanalternativeformofpaymentcreatedusingencryptionalgorithmsTheuseofencryptiontechnologiesmeansthatcryptocurrenciesfunctionbothasacurrencyandasavirtualaccountingsystem<br>
 
-k-apple
+k-apple<br>
 
-Transposition:
+Transposition:<br>
 
-Railfence;
+Railfence;<br>
 
-P: metmeatthepark
-c: MEMATEAKETETHPR
+P: metmeatthepark<br>
+c: MEMATEAKETETHPR<br>
 
-fixed columns:
-P: metmeatthepark
-k : 4
+fixed columns:<br>
+P: metmeatthepark<br>
+k : 4<br>
 
-permutation: 	
-P: enemyattackstonightz
-K: 3 1 4 5 2	
-C: EEMYNTAACTTKONSHITZG
+permutation: 	<br>
+P: enemyattackstonightz<br>
+K: 3 1 4 5 2	<br>
+C: EEMYNTAACTTKONSHITZG<br>
 
-combined approach:
+combined approach:<br>
 
-P: enemyattackstonightz
-K: 3 1 4 5 2	
-c: ETTHEAKIMAOTYCNZNTSG
+P: enemyattackstonightz<br>
+K: 3 1 4 5 2	<br>
+c: ETTHEAKIMAOTYCNZNTSG<br>
 
 
 

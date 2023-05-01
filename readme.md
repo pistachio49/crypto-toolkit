@@ -1,19 +1,16 @@
-Install python3 on linux device
-install modules like :
-flask
-sympy
-numpy
+Install python3 on linux device and go to the root folder.
 
-python3 app.py to run the server
+install modules using command : pip install -r requirements.txt
+
+Run the server using command: python3 app.py 
 
 
-Everytime if numerical appear in plain/cipher text error message popup
-Everytime if a blank column is present error message popup
+Everytime if numerical appear in plain/cipher text error message will popup.<br>
+Everytime if a blank column is present error message will popup.<br>
 
 Message box: 
 AFFINE:
 
-	It is done
 	ENCRYPTION:
 	plain text should be alphabetic characters.Numericals are not allowed in plain text. Key1 should have multiplicative inverse in modulo 26.
 
@@ -29,7 +26,7 @@ AFFINE:
 	
 	
 HILL:
-	//update on python side
+
 	ENCRYPTION:
 	key size = size of key matrix
 	key = alphabetic characters only with length key size*2
@@ -50,8 +47,6 @@ HILL:
 	keysize = 2
 	
 SHIFT/CAESER:
-
-	It is done
 	
 	Caeser cipher is choosen then key should not be present:
 	ENCRYPTION:
@@ -64,32 +59,22 @@ SHIFT/CAESER:
 	
 	CRYPTANALYSIS:
 	cipher text = alphabets
-	//no need of ceaser cipher crypt analysis in cryptanalysis page
 
 VIGENERE CIPHER:
-
-	It is done
 	
 	Ensure naming is correct "Vigenere"
 	ENCRYPTION:
 	plain text = alphabets
 	key = alphabets
 	
-	ERROR:
-	recheck everything !!
-	after encryption reach shift cipher page
 	
 	DECRYPTION:
 	cipher text = alphabets
 	key = alphabets
 	
-	CRYPTANALYSIS:
-	Need to recheck the code
 
 Monoalphabetic Substitution cipher:
-	
-	It is done
-	
+
 	
 	ENCRYPTION:
 	Plain text: alphabets
@@ -98,9 +83,6 @@ Monoalphabetic Substitution cipher:
 	DECRYPTION:
 	Cipher text: alphabets
 	Key: alphabets only with 26 characters present necessarily 
-	
-	CRYPTANALYSIS:
-	need changes
 
 
 TRANSPOSITION:
